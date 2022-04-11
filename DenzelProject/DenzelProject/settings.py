@@ -51,6 +51,7 @@ INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 MIDDLEWARE = [
     # "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,8 +136,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static/',
 ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/images/')
+MEDIA_ROOT = BASE_DIR / STATIC_URL / 'junk'
 MEDIA_URL = '/images/'
 
 AUTH_USER_MODEL = 'profileApp.CustomUser'

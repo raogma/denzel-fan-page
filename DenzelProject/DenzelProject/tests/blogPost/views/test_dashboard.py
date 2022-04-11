@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse_lazy
 
-
 class DashTest(TestCase):
     def test_public_access(self):
         response = self.client.get(reverse_lazy('posts'))
