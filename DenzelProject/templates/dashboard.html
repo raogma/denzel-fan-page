@@ -1,0 +1,119 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block content %}
+    <body id="eqdash">
+    {% if object_list %}
+        <div class="w3-main w3-content w3-padding" style="max-width:1000px;">
+            <div style="margin-top: 120px;">
+                <!-- First Photo Grid-->
+                <div class="row" id="food">
+                    {% for post in page_obj.object_list %}
+                        {% if forloop.counter <= 4 %}
+                            <div class="col w3-quarter">
+                                <a href="{% url 'post-details' post.pk %}">
+                                    {% if post.image %}
+                                        <img class="dashImg w3-round" src="{{ post.image.url }}"
+                                             alt="{{ post.description }}">
+                                    {% else %}
+                                        <img class="dashImg w3-round" src="{% static '/images/target.jpg' %}"
+                                             alt="{{ post.description }}">
+                                    {% endif %}
+                                </a>
+                                <h3>{{ post.header }}</h3>
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+                </div>
+                <!-- Second Photo Grid-->
+                <div style="margin-top: 100px;" class="row">
+                    {% for post in page_obj.object_list %}
+                        {% if forloop.counter > 4 %}
+                            <div class="col w3-quarter">
+                                <a href="{% url 'post-details' post.pk %}">
+                                    {% if post.image %}
+                                        <img class="dashImg w3-round" src="{{ post.image.url }}"
+                                             alt="{{ post.description }}">
+                                    {% else %}
+                                        <img class="dashImg w3-round" src="{% static '/images/target.jpg' %}"
+                                             alt="{{ post.description }}">
+                                    {% endif %}
+                                </a>
+                                <h3>{{ post.header }}</h3>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                <div class="w3-center w3-padding-32">
+                    <div class="w3-bar">
+                        {% if page_obj.has_previous %}
+                            <a class="w3-bar-item w3-button w3-hover-black"
+                               href="?page={{ page_obj.previous_page_number }}">«</a>
+                        {% endif %}
+                        <span class="w3-bar-item w3-button w3-black">{{ page_obj.number }}</span>
+
+                        {% if page_obj.has_next %}
+                            <a class="w3-bar-item w3-button w3-hover-black"
+                               href="?page={{ page_obj.next_page_number }}">»</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- Search -->
+                <button id="searchIcon" onclick="show_search_field()" class="w3-display-bottomleft w3-button w3-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-search"
+                         viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+                <form id="searchField" class="w3-container w3-display-bottomleft" method="post">
+                    {{ form }}
+                    {% csrf_token %}
+                    <button style="margin-right: 17px;" onclick="show_search_field()"
+                            class="w3-display-right w3-button w3-black" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-search"
+                             viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                    <button style="margin-right: 60px; margin-bottom: 2px;" onclick="hide_search_field()"
+                            class="w3-display-right w3-button w3-black" type="reset">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-x"
+                             viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    {% else %}
+        <header style="opacity: 0.5; width: 100%; padding: 10px;" class="w3-container w3-center w3-display-middle"
+                style="padding:128px 16px">
+            <h1 class="w3-margin w3-jumbo">No posts yet.</h1>
+            <h1 class="w3-margin w3-jumbo">Be the first one to create a post!</h1>
+        </header>
+
+    {% endif %}
+
+    </body>
+    <script>
+        function show_search_field() {
+            document.querySelector('#searchIcon').style.display = 'none'
+            document.querySelector('#searchField').style.display = 'block'
+
+        }
+
+        function hide_search_field() {
+            document.querySelector('#searchField').style.display = 'none'
+            document.querySelector('#searchIcon').style.display = 'block'
+        }
+
+        document.querySelector('#topMenu').style.color = "black"
+    </script>
+{% endblock %}

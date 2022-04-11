@@ -1,0 +1,78 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block content %}
+    <body id="pstdet">
+
+    <div style="padding-top:100px; height: fit-content;"
+         class="w3-container w3-card w3-white w3-round w3-display-middle"><br>
+        <div class="" style="margin-top: 80px;">
+            <hr class="w3-clear">
+            <img src="{% static 'images/defaultprofilepic.jpg' %}" alt="Avatar"
+                 class="w3-left w3-circle w3-margin-right"
+                 style="width:60px; object-fit:cover">
+            <span class="w3-right w3-opacity">{{ object.created }}</span>
+            <h4>{{ owner.get_name }}</h4><br>
+            <hr class="w3-clear">
+            <p>{{ object.header }}</p>
+
+            <div class="w3-display-container">
+                {% if post.image %}
+                    <img src="{{ object.image.url }}" style="width:600px; height:400px" class="w3-margin-bottom">
+                {% else %}
+                    <img style="width:500px; height:400px" class="w3-round" src="{% static '/images/target.jpg' %}" alt="{{ post.description }}">
+                {% endif %}
+                {% if owner.pk == request.user.pk %}
+                    <div style="" class="w3-dropdown-hover w3-display-topright">
+                        <button class="w3-button w3-ripple w3-black">&#8285;</button>
+                        <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a href="{% url 'edit-post' object.pk %}" class="w3-bar-item w3-button">Edit</a>
+                            <a href="{% url 'delete-post' object.pk %}" class="w3-bar-item w3-button">Delete</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            {% if object.description %}
+                <p>Description:</p>
+                <p style="overflow: auto; max-height: 150px; max-width: 500px;">{{ object.description }}</p>
+            {% endif %}
+
+            {% if owner.pk != request.user.pk and request.user.is_authenticated %}
+                <a href="{% url 'post-details-like' object.pk %}" type="button"
+                   class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>
+                     Like: {{ likes_count }}</a>
+                <a href="{% url 'post-details-dislike' object.pk %}" type="button"
+                   class="w3-button w3-theme-d1 w3-margin-bottom"><i
+                        class="fa fa-thumbs-down"></i>
+                     Dislike: {{ dislikes_count }}</a>
+            {% else %}
+                <p class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>
+                     Likes: {{ likes_count }}</p>
+                <p class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-down"></i>
+                     Dislikes: {{ dislikes_count }}</p>
+            {% endif %}
+            <a href="{% url 'post-details-comments' object.pk 1 %}" type="button"
+               class="w3-button w3-theme-d2 w3-margin-bottom"><i
+                    class="fa fa-comment"></i>
+                 Comments: {{ comments_count }}
+            </a>
+
+            <div style="display:none" class="w3-container" id="comments">
+                <h2>Comments</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <p style="margin-top: 10px;">
+                        <button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+    <script>
+        document.querySelector('#logoutBtn').style.color = 'white';
+        document.querySelector('#stripes').style.color = 'white';
+    </script>
+{% endblock %}

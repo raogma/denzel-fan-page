@@ -1,0 +1,67 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block content %}
+    <body id="pstdet">
+
+    <div style="width: 600px; padding-bottom: 350px; padding-top: 100px;" class="w3-container w3-card w3-white w3-round w3-display-middle"><br>
+
+        <div style="height:500px; margin-top: 150px;" class="w3-container w3-display-top" id="comments">
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <h2 class="w3-text-grey w3-padding-16 w3-display-top"><i
+                        class="fa fa-comment fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Comments
+                </h2>
+                {% if object_list %}
+                    {% for comment in object_list %}
+                        <div class="w3-container">
+                            <input class="commentPk" type="hidden" value="{{ comment.pk }}">
+                            {% if comment.owner.pk == request.user.pk %}
+                                <div style="float:right" class="w3-dropdown-hover">
+                                    <button class="w3-button w3-ripple w3-white">&#8285;</button>
+                                    <div class="w3-dropdown-content w3-bar-block w3-border">
+                                        <a href="{% url 'post-edit-comments' comment.post_id comment.pk object_list.number %}" class="w3-bar-item w3-button editBtn">Edit</a>
+                                        <a href="{% url 'post-delete-comments' comment.post_id comment.pk object_list.number %}" class="w3-bar-item w3-button delBtn">Delete</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <h5 style="display: inline-block;" class="w3-opacity">
+                                <b>{{ comment.owner.profile.get_name }}</b></h5>
+                            <h6 style="display: inline-block;" class="w3-text-teal"><i
+                                    class="fa fa-calendar fa-fw w3-margin-right"></i>{{ comment.created }}</h6>
+                            <p>{{ comment.content }}</p>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                <!-- Pagination -->
+                <div class="w3-center w3-padding-32">
+                    <div class="w3-bar">
+                        {% if object_list.has_previous %}
+                            <a class="w3-bar-item w3-button w3-hover-black"
+                               href="{% url 'post-details-comments' post_pk object_list.previous_page_number %}">«</a>
+                        {% endif %}
+                        <span class="w3-bar-item w3-button w3-black">{{ object_list.number }}</span>
+
+                        {% if object_list.has_next %}
+                            <a class="w3-bar-item w3-button w3-hover-black"
+                               href="{% url 'post-details-comments' post_pk object_list.next_page_number %}">»</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <form style="display: block" id="crmsgForm" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <p style="margin-top: 10px;">
+                        <button class="w3-button w3-black w3-padding-large" type="submit">Submit</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+    <script>
+        document.querySelector('#logoutBtn').style.color = 'white';
+        document.querySelector('#stripes').style.color = 'white';
+    </script>
+{% endblock %}

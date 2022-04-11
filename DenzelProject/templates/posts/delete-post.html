@@ -1,0 +1,13 @@
+{% extends 'main/mainForm.html' %}
+{% block formContent %}
+<body id="crpstpage">
+    <form style="height:600px;" class="pstForm w3-display-middle" method="POST" class="w3-container" enctype="multipart/form-data">
+        <div style="padding-top: 10px;color:white;" class="w3-container">
+          <h2 class="w3-center">Delete your story?</h2>
+        </div>
+        {{ form }}
+        {% csrf_token %}
+        <button class="w3-button w3-block w3-section w3-blue-grey w3-ripple w3-padding">Delete</button>
+    </form>
+</body>
+{% endblock %}

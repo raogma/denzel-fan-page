@@ -1,0 +1,17 @@
+{% extends 'main/main.html' %}
+{% block content %}
+<body id="crpstpage">
+    <form style="height:550px" method="POST" class="pstForm w3-display-middle w3-container" enctype="multipart/form-data">
+        <div style="color:white" class="w3-container">
+          <h2 class="w3-center">Upload your Denzel story</h2>
+        </div>
+        {{ form }}
+        {% csrf_token %}
+        <button class="w3-button w3-block w3-section w3-blue-grey w3-ripple w3-padding">Add</button>
+    </form>
+</body>
+    <script>
+    document.querySelector('#topMenu').style.color = 'white';
+    document.querySelector('#logoutBtn').style.color = 'white';
+    </script>
+{% endblock %}
