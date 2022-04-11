@@ -25,9 +25,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)e+*dq%b$qu7@hmlz-fo0oepu+*-ee$57mp66#@90hhom^w2-_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
+def get_environment():
+    return os.getenv('APP_ENVIRONMENT')
+
+
+DEBUG = True
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
+
+if get_environment() == 'Prod':
+    DEBUG = False
+    ALLOWED_HOSTS = [
+        'heroku TODO'
+    ]
 
 
 DJANGO_APPS = [
@@ -37,7 +51,6 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'debug_toolbar'
 ]
 
 PROJECT_APPS = [
@@ -95,24 +108,37 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+AUTH_PASSWORD_VALIDATORS = []
+
+if get_environment() == 'Prod':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd1slq41mjcb0fq',
+            'USER': 'fragteprteduke',
+            'PASSWORD': '62777d5271bb3fb6a93b4672f18b349f7b03348f118633ee4206ef379b864e06',
+            'HOST': 'ec2-176-34-211-0.eu-west-1.compute.amazonaws.com',
+            'PORT': '5432',
+        }
+    }
+
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        },
+    ]
 
 
 # Internationalization
