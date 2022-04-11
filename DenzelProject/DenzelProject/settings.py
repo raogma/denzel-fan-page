@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
 ]
 
 if get_environment() == 'Prod':
-    DEBUG = False
+    DEBUG = 'False'
     ALLOWED_HOSTS = [
         'denzel-fanpage.herokuapp.com',
     ]
