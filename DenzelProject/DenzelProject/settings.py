@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)e+*dq%b$qu7@hmlz-fo0oepu+*-ee$57mp66#@90hhom^w2-_'
+
+SECRET_KEY = 'something-not-important'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -42,6 +43,7 @@ if get_environment() == 'Prod':
     ALLOWED_HOSTS = [
         'denzel-fanpage.herokuapp.com',
     ]
+    SECRET_KEY = 'dmqp61@9-6_drue^z@^=s4xbwgj^qwz!64&(i30fd^s2@2nf+7'
 
 
 DJANGO_APPS = [
