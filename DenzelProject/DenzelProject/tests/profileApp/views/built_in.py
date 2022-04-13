@@ -1,10 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse_lazy
 
-from DenzelProject.tests.mixins import ProfileMixin
+from DenzelProject.utils import ProfileTestMixin
 
 
-class LoginTest(TestCase, ProfileMixin):
+class LoginTest(TestCase, ProfileTestMixin):
     def test_template(self):
         self.assertTemplateUsed('profile/login.html')
 
@@ -31,7 +31,7 @@ class LogoutTemplateTest(TestCase):
         self.assertRedirects(response, '/profile/login/?next=/profile/logout/')
 
 
-class LogoutConfirmTest(TestCase, ProfileMixin):
+class LogoutConfirmTest(TestCase, ProfileTestMixin):
     def test_correct_redirect_after_success(self):
         self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)

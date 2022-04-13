@@ -19,7 +19,7 @@
                 {% if post.image %}
                     <img src="{{ object.image.url }}" style="width:600px; height:400px" class="w3-margin-bottom">
                 {% else %}
-                    <img style="width:500px; height:400px" class="w3-round" src="{% static '/images/target.jpg' %}" alt="{{ post.description }}">
+                    <img style="width:500px; height:400px" class="w3-round" src="{% static 'images/target.jpg' %}" alt="{{ post.description }}">
                 {% endif %}
                 {% if owner.pk == request.user.pk %}
                     <div style="" class="w3-dropdown-hover w3-display-topright">

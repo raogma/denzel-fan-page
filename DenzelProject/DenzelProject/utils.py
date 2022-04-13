@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 
@@ -87,13 +88,6 @@ class ReloadSamePageMixin:
 
 
 def save_liking(req, pk, CurrentObject):
-    exists = CurrentObject.objects.filter(
-        post_id=pk,
-        owner_id=req.user.pk,
-    )
-    if exists:
-        return exists.delete()
-
     obj = CurrentObject(
         post=Post.objects.get(pk=pk),
         owner=req.user,
@@ -110,6 +104,16 @@ def check_opposite_liking_exists(req, pk, CurrentObject):
         obj.delete()
 
 
+def check_same_liking_exists(req, pk, CurrentObject):
+    obj = CurrentObject.objects.filter(
+        post_id=pk,
+        owner_id=req.user.pk,
+    )
+    if obj:
+        obj.delete()
+        return 'deleted'
+
+
 class LoadCommentsContextDataMixin:
     def load_ctx(self, ctx):
         post_pk = self.kwargs['pk']
@@ -120,3 +124,27 @@ class LoadCommentsContextDataMixin:
         page = self.kwargs['page']
         ctx['object_list'] = paginator.get_page(int(page))
         ctx['post_pk'] = post_pk
+
+
+class ProfileTestMixin:
+    user_credentials = {
+        'email': 'test@gmail.com',
+        'password': '1234',
+    }
+
+    def _create_user(self, other_credentials):
+        credentials = self.user_credentials
+        if other_credentials:
+            credentials = other_credentials
+        user = get_user_model().objects.create_user(**credentials)
+        return user
+
+
+class CreateObjectsTestMixin:
+    @staticmethod
+    def _create_objects(Obj, user, post, total):
+        for x in range(total):
+            Obj.objects.create(
+                owner=user,
+                post=post,
+            )

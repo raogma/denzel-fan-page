@@ -9,7 +9,8 @@ from django.views.generic import ListView, CreateView, DetailView, DeleteView, U
 from DenzelProject.blogPost.forms import CreatePostForm, SearchDashForm, DeletePostForm, CommentForm, DelCommentForm, \
     UpCommentForm
 from DenzelProject.blogPost.models import Post, Comment, Like, Dislike
-from DenzelProject.utils import ReloadSamePageMixin, check_opposite_liking_exists, save_liking, LoadCommentsContextDataMixin
+from DenzelProject.utils import ReloadSamePageMixin, check_opposite_liking_exists, save_liking, \
+    LoadCommentsContextDataMixin, check_same_liking_exists
 
 
 class DashView(ListView):
@@ -28,13 +29,16 @@ class DashView(ListView):
 
 def like_fn(req, pk):
     check_opposite_liking_exists(req, pk, Dislike)
-    save_liking(req, pk, Like)
+    if check_same_liking_exists(req, pk, Like) != 'deleted':
+        save_liking(req, pk, Like)
     return redirect('post-details', pk)
 
 
 def dislike_fn(req, pk):
     check_opposite_liking_exists(req, pk, Like)
-    save_liking(req, pk, Dislike)
+    if check_same_liking_exists(req, pk, Dislike) != 'deleted':
+        save_liking(req, pk, Dislike)
+
     return redirect('post-details', pk)
 
 
@@ -104,10 +108,15 @@ class PostDetailsView(DetailView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
+
         ctx['owner'] = self.object.owner.profile
-        ctx['comments_count'] = self.object.comment_set.count()
-        ctx['likes_count'] = self.object.like_set.count()
-        ctx['dislikes_count'] = self.object.dislike_set.count()
+        ctx['comments_count'] = Comment.objects\
+            .select_related('post').filter(post=self.object).count()
+        ctx['likes_count'] = Like.objects\
+            .select_related('post').filter(post=self.object).count()
+        ctx['dislikes_count'] = Dislike.objects\
+            .select_related('post').filter(post=self.object).count()
+
         return ctx
 
 

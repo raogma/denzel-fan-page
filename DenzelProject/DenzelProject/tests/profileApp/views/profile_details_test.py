@@ -1,14 +1,11 @@
 from django.contrib.auth import get_user_model
-from django.contrib.staticfiles import finders
 from django.test import TestCase
 from django.urls import reverse_lazy
-
 from DenzelProject.blogPost.models import Post, Like, Dislike
-from DenzelProject.settings import BASE_DIR, MEDIA_URL, MEDIA_ROOT, STATICFILES_DIRS
-from DenzelProject.tests.mixins import ProfileMixin
+from DenzelProject.utils import ProfileTestMixin
 
 
-class ProfileDetailsTest(TestCase, ProfileMixin):
+class ProfileTestDetailsTest(TestCase, ProfileTestMixin):
     other_user_credentials = {
         'email': 'other@gmail.com',
         'password': '1234'
