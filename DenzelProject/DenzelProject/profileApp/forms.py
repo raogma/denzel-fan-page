@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.admin.widgets import AdminFileWidget
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 
 from DenzelProject.profileApp.models import Profile
 from DenzelProject.utils import ApplyStyleMixin
@@ -160,3 +160,13 @@ class LoginForm(AuthenticationForm, ApplyStyleMixin):
                 },
             )
         }
+
+
+class ChangePasswordForm(PasswordChangeForm, ApplyStyleMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.apply_style_w3()
+
+    class Meta:
+        model = get_user_model()
+        fields = '__all__'

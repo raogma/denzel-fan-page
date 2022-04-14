@@ -1,7 +1,8 @@
+from django.contrib.auth.views import PasswordChangeView
 from django.urls import path
 
 from DenzelProject.profileApp.views import ProfileDetails, RegisterView, LoginView, LogoutTemplateView, \
-    LogoutConfirmView, EditProfileView, DeleteProfileView
+    LogoutConfirmView, EditProfileView, DeleteProfileView, ChangePasswordView
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='create-profile'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('details/<int:pk>/', ProfileDetails.as_view(), name='profile-details'),
     path('edit/<int:pk>', EditProfileView.as_view(), name='edit-profile'),
     path('delete/<int:pk>', DeleteProfileView.as_view(), name='delete-profile'),
+    path('change-password/<int:pk>', ChangePasswordView.as_view(), name='change-password')
 ]

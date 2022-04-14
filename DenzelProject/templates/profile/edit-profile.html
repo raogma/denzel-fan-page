@@ -8,6 +8,8 @@
         {{ form }}
         {% csrf_token %}
         <button class="w3-button w3-block w3-section w3-blue-grey w3-ripple w3-padding">Done</button>
+        <a style="color:white" class="w3-display-bottom" href="{% url 'change-password' object.pk %}">Change Password</a>
     </form>
     </body>
+
 {% endblock %}

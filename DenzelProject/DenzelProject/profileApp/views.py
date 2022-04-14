@@ -1,13 +1,14 @@
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, TemplateView, UpdateView, DeleteView
 
 from DenzelProject.blogPost.models import Post
-from DenzelProject.profileApp.forms import CreateProfileForm, LoginForm, EditProfileForm, DeleteProfileForm
+from DenzelProject.profileApp.forms import CreateProfileForm, LoginForm, EditProfileForm, DeleteProfileForm, \
+    ChangePasswordForm
 from DenzelProject.profileApp.models import Profile
 
 
@@ -85,3 +86,11 @@ class LogoutTemplateView(LoginRequiredMixin, TemplateView):
 class LogoutConfirmView(LoginRequiredMixin, LogoutView):
     def get_next_page(self):
         return reverse_lazy('welcome')
+
+
+class ChangePasswordView(PasswordChangeView):
+    template_name = 'profile/change-password.html'
+    form_class = ChangePasswordForm
+
+    def get_success_url(self):
+        return reverse_lazy('profile-details', kwargs={'pk': self.kwargs['pk']})
