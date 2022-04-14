@@ -2,10 +2,10 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse_lazy
 from DenzelProject.blogPost.models import Post, Like, Dislike
-from DenzelProject.utils import ProfileTestMixin
+from DenzelProject.utils import CreateUserMixin
 
 
-class ProfileTestDetailsTest(TestCase, ProfileTestMixin):
+class CreateUser(TestCase, CreateUserMixin):
     other_user_credentials = {
         'email': 'other@gmail.com',
         'password': '1234'

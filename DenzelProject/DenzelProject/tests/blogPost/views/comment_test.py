@@ -2,10 +2,10 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 
 from DenzelProject.blogPost.models import Post, Comment
-from DenzelProject.utils import ProfileTestMixin, CreateObjectsTestMixin
+from DenzelProject.utils import CreateUserMixin, CreateObjectsTestMixin
 
 
-class CommentCreateTest(TestCase, ProfileTestMixin, CreateObjectsTestMixin):
+class CommentCreateTest(TestCase, CreateUserMixin, CreateObjectsTestMixin):
     def setUp(self) -> None:
         self.user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)
@@ -69,7 +69,7 @@ class CommentCreateTest(TestCase, ProfileTestMixin, CreateObjectsTestMixin):
         self.assertEqual(len(comments), 3)
 
 
-class CommentDeleteTest(TestCase, ProfileTestMixin, CreateObjectsTestMixin):
+class CommentDeleteTest(TestCase, CreateUserMixin, CreateObjectsTestMixin):
     def setUp(self) -> None:
         self.user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)
@@ -126,7 +126,7 @@ class CommentDeleteTest(TestCase, ProfileTestMixin, CreateObjectsTestMixin):
         self.assertIsNone(comment)
 
 
-class CommentEditTest(TestCase, ProfileTestMixin, CreateObjectsTestMixin):
+class CommentEditTest(TestCase, CreateUserMixin, CreateObjectsTestMixin):
     def setUp(self) -> None:
         self.user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)

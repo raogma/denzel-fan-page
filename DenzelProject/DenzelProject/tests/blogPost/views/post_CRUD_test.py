@@ -2,10 +2,10 @@ from django.test import TestCase
 from django.urls import reverse_lazy, reverse
 
 from DenzelProject.blogPost.models import Post
-from DenzelProject.utils import ProfileTestMixin
+from DenzelProject.utils import CreateUserMixin
 
 
-class CreatePostTest(TestCase, ProfileTestMixin):
+class CreatePostTest(TestCase, CreateUserMixin):
     def setUp(self) -> None:
         self.user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)
@@ -32,7 +32,7 @@ class CreatePostTest(TestCase, ProfileTestMixin):
         self.assertIsNotNone(post.owner_id)
 
 
-class EditPostTest(TestCase, ProfileTestMixin):
+class EditPostTest(TestCase, CreateUserMixin):
     def setUp(self) -> None:
         self.user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)
@@ -65,7 +65,7 @@ class EditPostTest(TestCase, ProfileTestMixin):
         self.assertEqual(post.description, 'added description')
 
 
-class DeletePostTest(TestCase, ProfileTestMixin):
+class DeletePostTest(TestCase, CreateUserMixin):
     def setUp(self) -> None:
         self.user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)

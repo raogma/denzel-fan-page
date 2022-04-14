@@ -2,10 +2,10 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 
 from DenzelProject.blogPost.models import Post, Like, Dislike, Comment
-from DenzelProject.utils import ProfileTestMixin, CreateObjectsTestMixin
+from DenzelProject.utils import CreateUserMixin, CreateObjectsTestMixin
 
 
-class PostDetailsTest(TestCase, ProfileTestMixin, CreateObjectsTestMixin):
+class PostDetailsTest(TestCase, CreateUserMixin, CreateObjectsTestMixin):
     test1_credentials = {
         'email': 'test1@gmail.com',
         'password': '1234',

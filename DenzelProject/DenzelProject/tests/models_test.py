@@ -1,9 +1,9 @@
 from django.test import TestCase
 from DenzelProject.profileApp.models import Profile
-from DenzelProject.utils import ProfileTestMixin
+from DenzelProject.utils import CreateUserMixin
 
 
-class ProfileTest(TestCase, ProfileTestMixin):
+class CreateUser(TestCase, CreateUserMixin):
     names_data = {
         'first_name': 'test_name_1',
         'last_name': 'test_name_2',

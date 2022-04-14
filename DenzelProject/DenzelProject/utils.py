@@ -126,7 +126,7 @@ class LoadCommentsContextDataMixin:
         ctx['post_pk'] = post_pk
 
 
-class ProfileTestMixin:
+class CreateUserMixin:
     user_credentials = {
         'email': 'test@gmail.com',
         'password': '1234',

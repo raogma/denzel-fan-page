@@ -1,11 +1,13 @@
 from django.core.exceptions import ValidationError
 from django.utils.deconstruct import deconstructible
+from re import findall
 
 
 def validate_phone_only_numbers(value):
-    for ch in value:
-        if not ch.isdigit() and ch != '+':
-            raise ValidationError('Invalid Phone Number Format')
+    regex = r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$'
+    res = findall(regex, value)
+    if not res:
+        raise ValidationError('Invalid Phone Number Format@')
 
 
 @deconstructible

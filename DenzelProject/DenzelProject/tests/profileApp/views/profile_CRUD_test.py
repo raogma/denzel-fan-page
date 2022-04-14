@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import reverse_lazy, reverse
 
 from DenzelProject.profileApp.models import Profile
-from DenzelProject.utils import ProfileTestMixin
+from DenzelProject.utils import CreateUserMixin
 
 
 class CreateProfileTest(TestCase):
@@ -28,7 +28,7 @@ class CreateProfileTest(TestCase):
         self.assertRedirects(response, expected_url=reverse_lazy('posts'))
 
 
-class EditProfileTestTest(TestCase, ProfileTestMixin):
+class EditCreateUser(TestCase, CreateUserMixin):
     def test_correct_redirect(self):
         user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)
@@ -66,7 +66,7 @@ class EditProfileTestTest(TestCase, ProfileTestMixin):
         self.assertEqual(profile.phone_number, '8888888')
 
 
-class DeleteProfileTestTest(TestCase, ProfileTestMixin):
+class DeleteCreateUser(TestCase, CreateUserMixin):
     def test_delete_profile(self):
         user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)

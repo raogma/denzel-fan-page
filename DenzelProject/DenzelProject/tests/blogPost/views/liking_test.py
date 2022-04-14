@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 
 from DenzelProject.blogPost.models import Post, Like, Dislike
-from DenzelProject.utils import ProfileTestMixin
+from DenzelProject.utils import CreateUserMixin
 
 
 class DashTest(TestCase):
@@ -11,7 +11,7 @@ class DashTest(TestCase):
         self.assertTemplateUsed(response, 'dashboard.html')
 
 
-class LikingTest(TestCase, ProfileTestMixin):
+class LikingTest(TestCase, CreateUserMixin):
     def setUp(self) -> None:
         self.user = self._create_user(other_credentials=None)
         self.client.login(**self.user_credentials)
