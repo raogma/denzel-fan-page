@@ -1,5 +1,5 @@
-{% extends 'main/main.html' %}
-{% block content %}
+{% extends 'main/mainClean.html' %}
+{% block contentClean %}
     <body id="pstdet">
 
     <div style="width: 600px; padding-bottom: 350px; padding-top: 100px;" class="w3-container w3-card w3-white w3-round w3-display-middle"><br>
@@ -60,7 +60,9 @@
     </div>
     </body>
     <script>
-        document.querySelector('#logoutBtn').style.color = 'white';
-        document.querySelector('#stripes').style.color = 'white';
+        let h1 = document.querySelector('#topMenu h1')
+        h1.style.color = 'black';
+        h1.style.zIndex = '1';
+        h1.className += ' w3-display-topmiddle'
     </script>
 {% endblock %}
