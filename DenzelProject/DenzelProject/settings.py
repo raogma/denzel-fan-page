@@ -32,7 +32,7 @@ def get_environment():
     return os.getenv('APP_ENVIRONMENT')
 
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',

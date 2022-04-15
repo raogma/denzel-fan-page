@@ -11,3 +11,4 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 import DenzelProject.signals
+handler404 = 'DenzelProject.mainApp.views.not_found_view'
