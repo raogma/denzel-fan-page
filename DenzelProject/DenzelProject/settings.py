@@ -32,14 +32,14 @@ def get_environment():
     return os.getenv('APP_ENVIRONMENT')
 
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
 ]
 
 if get_environment() == 'Prod':
-    DEBUG = 'False'
+    DEBUG = False
     ALLOWED_HOSTS = [
         'denzel-fanpage.herokuapp.com',
     ]
