@@ -17,7 +17,7 @@
 
             <div class="w3-display-container">
                 {% if post.image %}
-                    <img src="{{ object.image.url }}" style="width:600px; height:400px" class="w3-margin-bottom">
+                    <img src="{{ object.image.url }}" style="width:600px; height:400px; object-fit: cover" class="w3-margin-bottom">
                 {% else %}
                     <img style="width:500px; height:400px" class="w3-round" src="{% static 'images/target.jpg' %}" alt="{{ post.description }}">
                 {% endif %}
