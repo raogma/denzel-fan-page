@@ -156,7 +156,6 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
 
     def get_initial(self):
         return {
-            'image': self.object.image,
             'header': self.object.header,
             'description': self.object.description,
         }

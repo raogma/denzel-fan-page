@@ -44,7 +44,7 @@ class DeletePostForm(forms.ModelForm, ApplyStyleMixin):
 
     class Meta:
         model = Post
-        exclude = ('owner', )
+        exclude = ('owner', 'image')
         widgets = {
             'header': forms.TextInput(
                 attrs={
