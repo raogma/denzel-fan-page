@@ -5,6 +5,7 @@ from django.db import models
 
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import BaseUserManager
+from cloudinary.models import CloudinaryField
 
 from DenzelProject.validators import validate_phone_only_numbers, MinValidator, MaxSizeValidatorMB
 
@@ -48,10 +49,10 @@ class Profile(models.Model):
     gender_choices = [
         'male', 'female', 'do not show',
     ]
-    avatar = models.FileField(
-        validators=(
-            MaxSizeValidatorMB(2),
-        ),
+    avatar = CloudinaryField(
+        # validators=(
+        #     MaxSizeValidatorMB(2),
+        # ),
         null=True,
         blank=True,
     )

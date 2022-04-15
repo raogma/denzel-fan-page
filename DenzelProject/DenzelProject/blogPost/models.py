@@ -4,13 +4,14 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 from DenzelProject.validators import MinValidator, MaxValidator, MaxSizeValidatorMB
+from cloudinary.models import CloudinaryField
 
 
 class Post(models.Model):
-    image = models.ImageField(
-        validators=(
-            MaxSizeValidatorMB(2),
-        ),
+    image = CloudinaryField(
+        # validators=(
+        #     MaxSizeValidatorMB(2),
+        # ),
         null=True,
         blank=True,
     )
