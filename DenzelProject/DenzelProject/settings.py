@@ -19,6 +19,7 @@ SECRET_KEY = 'something-not-important'
 
 
 def get_environment():
+    print(os.getenv('APP_ENVIRONMENT'))
     return os.getenv('APP_ENVIRONMENT')
 
 
@@ -102,6 +103,8 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = []
 
 
+
+
 if get_environment() == 'Prod':
     DATABASES = {
         'default': {
@@ -114,12 +117,16 @@ if get_environment() == 'Prod':
         }
     }
 
+    data = {
+        'cloud_name':'dmj8rkcuf',
+        'api_key':'685196237251781',
+        'api_secret':'0k1GgI0or4_ZMGNdugnvbQLRNJQ',
+        'secure':'True',
+    }
     cloudinary.config(
-        cloud_name="dmj8rkcuf",
-        api_key="258185258646233",
-        api_secret="qwxNRwSrTR4-8MGF0E05di1upU4",
-        secure=True
+        **data
     )
+
 
     AUTH_PASSWORD_VALIDATORS = [
         {

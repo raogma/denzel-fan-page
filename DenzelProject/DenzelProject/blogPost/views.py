@@ -1,3 +1,4 @@
+import cloudinary
 from django.contrib.staticfiles import finders
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
