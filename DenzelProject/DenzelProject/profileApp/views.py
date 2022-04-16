@@ -62,7 +62,6 @@ class DeleteProfileView(LoginRequiredMixin, DeleteView):
 
     def get_initial(self):
         return {
-            'avatar': self.object.avatar,
             'first_name': self.object.first_name,
             'last_name': self.object.last_name,
             'phone_number': self.object.phone_number,

@@ -23,15 +23,12 @@ class DashView(ListView):
         title_filter = self.request.GET.get('searched')
         if title_filter:
             queryset = queryset.filter(header__contains=title_filter)
-        return queryset.select_related('owner')
+        return queryset.select_related('owner').order_by('-created')
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
         ctx['form'] = SearchDashForm
         return ctx
-
-
-
 
 
 def like_fn(req, pk):

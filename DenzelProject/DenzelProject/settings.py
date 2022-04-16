@@ -101,6 +101,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = []
 
+
 if get_environment() == 'Prod':
     DATABASES = {
         'default': {
@@ -112,6 +113,13 @@ if get_environment() == 'Prod':
             'PORT': '5432',
         }
     }
+
+    cloudinary.config(
+        cloud_name="dmj8rkcuf",
+        api_key="258185258646233",
+        api_secret="qwxNRwSrTR4-8MGF0E05di1upU4",
+        secure=True
+    )
 
     AUTH_PASSWORD_VALIDATORS = [
         {
@@ -165,12 +173,6 @@ AUTH_USER_MODEL = 'profileApp.CustomUser'
 
 LOGIN_URL = reverse_lazy('login')
 
-cloudinary.config(
-    cloud_name="dmj8rkcuf",
-    api_key="341822772119149",
-    api_secret="vzi2ZS6U5XxXec38qZlkUB_3um8",
-    secure=True
-)
 # LOGGING = {
 #     'version': 1,
 #     'filters': {
