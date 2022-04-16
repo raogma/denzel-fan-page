@@ -102,8 +102,26 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = []
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "example"
+    }
+}
 
-
+data = {
+    'cloud_name': 'dmj8rkcuf',
+    'api_key': '685196237251781',
+    'api_secret': '0k1GgI0or4_ZMGNdugnvbQLRNJQ',
+    'secure': 'True',
+}
+cloudinary.config(
+    **data
+)
 
 if get_environment() == 'Prod':
     DATABASES = {
@@ -117,15 +135,18 @@ if get_environment() == 'Prod':
         }
     }
 
-    data = {
-        'cloud_name':'dmj8rkcuf',
-        'api_key':'685196237251781',
-        'api_secret':'0k1GgI0or4_ZMGNdugnvbQLRNJQ',
-        'secure':'True',
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://redistogo:f601f4462e5cf3f168da00983fa640aa@porgy.redistogo.com:9312/",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient"
+            },
+            "KEY_PREFIX": "example"
+        }
     }
-    cloudinary.config(
-        **data
-    )
+
+
 
 
     AUTH_PASSWORD_VALIDATORS = [
@@ -179,6 +200,9 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'profileApp.CustomUser'
 
 LOGIN_URL = reverse_lazy('login')
+
+
+
 
 # LOGGING = {
 #     'version': 1,

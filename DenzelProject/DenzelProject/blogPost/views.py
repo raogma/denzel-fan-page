@@ -1,12 +1,9 @@
-import cloudinary
 from django.contrib.staticfiles import finders
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
-from django.db.models.fields.files import ImageFieldFile, FileField, ImageField
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
-
+from django.core.cache import cache
 from DenzelProject.blogPost.forms import CreatePostForm, SearchDashForm, DeletePostForm, CommentForm, DelCommentForm, \
     UpCommentForm
 from DenzelProject.blogPost.models import Post, Comment, Like, Dislike
@@ -24,7 +21,8 @@ class DashView(ListView):
         title_filter = self.request.GET.get('searched')
         if title_filter:
             queryset = queryset.filter(header__contains=title_filter)
-        return queryset.select_related('owner').order_by('-created')
+        queryset = queryset.select_related('owner').order_by('-created')
+        return queryset
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
