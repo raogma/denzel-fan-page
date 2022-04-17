@@ -1,4 +1,4 @@
 *.html linguist-detectable=false
-*.javascript linguist-detectable=false
+*.js linguist-detectable=false
 *.css linguist-detectable=false
-*.powershell linguist-detectable=false
+*.ps linguist-detectable=false
