@@ -4,24 +4,18 @@ from django.urls import reverse_lazy
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from decouple import config
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+def is_production():
+    APP_ENVIRONMENT = config('APP_ENVIRONMENT')
+    return True if APP_ENVIRONMENT == 'Prod' else False
+
 
 SECRET_KEY = 'something-not-important'
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-
-
-def get_environment():
-    print(os.getenv('APP_ENVIRONMENT'))
-    return os.getenv('APP_ENVIRONMENT')
-
 
 DEBUG = True
 ALLOWED_HOSTS = [
@@ -29,12 +23,12 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 
-if get_environment() == 'Prod':
+if is_production():
     DEBUG = False
     ALLOWED_HOSTS = [
-        'denzel-fanpage.herokuapp.com',
+        config('ALLOWED_HOSTS'),
     ]
-    SECRET_KEY = 'dmqp61@9-6_drue^z@^=s4xbwgj^qwz!64&(i30fd^s2@2nf+7'
+    SECRET_KEY = config('SECRET_KEY')
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -114,40 +108,37 @@ CACHES = {
 }
 
 data = {
-    'cloud_name': 'dmj8rkcuf',
-    'api_key': '685196237251781',
-    'api_secret': '0k1GgI0or4_ZMGNdugnvbQLRNJQ',
-    'secure': 'True',
+
 }
 cloudinary.config(
-    **data
+    cloud_name=config('cl_cloud_name'),
+    api_key=config('cl_api_key'),
+    api_secret=config('cl_api_secret'),
+    secure='True',
 )
 
-if get_environment() == 'Prod':
+if is_production():
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'd1slq41mjcb0fq',
-            'USER': 'fragteprteduke',
-            'PASSWORD': '62777d5271bb3fb6a93b4672f18b349f7b03348f118633ee4206ef379b864e06',
-            'HOST': 'ec2-176-34-211-0.eu-west-1.compute.amazonaws.com',
-            'PORT': '5432',
+            'ENGINE': config('db_ENGINE'),
+            'NAME': config('db_NAME'),
+            'USER': config('db_USER'),
+            'PASSWORD': config('db_PASSWORD'),
+            'HOST': config('db_HOST'),
+            'PORT': config('db_PORT'),
         }
     }
 
     CACHES = {
         "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://redistogo:f601f4462e5cf3f168da00983fa640aa@porgy.redistogo.com:9312/",
+            "BACKEND": config('cache_BACKEND'),
+            "LOCATION": config('cache_LOCATION'),
             "OPTIONS": {
-                "CLIENT_CLASS": "django_redis.client.DefaultClient"
+                "CLIENT_CLASS": config('cache_CLIENT_CLASS')
             },
             "KEY_PREFIX": "example"
         }
     }
-
-
-
 
     AUTH_PASSWORD_VALIDATORS = [
         {
@@ -200,8 +191,6 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'profileApp.CustomUser'
 
 LOGIN_URL = reverse_lazy('login')
-
-
 
 
 # LOGGING = {
