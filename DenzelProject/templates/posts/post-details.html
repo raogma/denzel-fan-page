@@ -45,12 +45,12 @@
                         class="fa fa-thumbs-down"></i>
                      Dislike: {{ dislikes_count }}</a>
             {% else %}
-                <p class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>
+                <p style="padding: 10px 20px; display:inline-flex" class="w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>
                      Likes: {{ likes_count }}</p>
-                <p class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-down"></i>
+                <p style="padding: 10px 20px; display:inline-flex" class="w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-down"></i>
                      Dislikes: {{ dislikes_count }}</p>
             {% endif %}
-            <a href="{% url 'post-details-comments' object.pk 1 %}" type="button"
+            <a style="margin-top:20px; padding: 10px 20px; display:inline-flex" href="{% url 'post-details-comments' object.pk 1 %}" type="button"
                class="w3-button w3-theme-d2 w3-margin-bottom"><i
                     class="fa fa-comment"></i>
                  Comments: {{ comments_count }}

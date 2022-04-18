@@ -1,137 +1,17 @@
-#eqdash {
-    background-image: url(../images/eqdash.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-x: 150px;
-    background-position-y: -70px;
-}
-
-#contactspage {
-    color: white;
-    background-image: url(../images/trainingday2.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#logoutpage {
-    color: white;
-    background-image: url(../images/flight.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#reg {
-    background-image: url(../images/eqend.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#profdet {
-    background-image: url(../images/abstr.jpg);
-    background-repeat: repeat-y;
-    background-size: 100%;
-}
-
-#crpstpage {
-    background-image: url(../images/trainingday.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#pstdet {
-    background-image: url(../images/m_merged.png);
-    background-size: 170%;
-    background-position-x: center;
-    background-repeat: no-repeat;
-}
-
-#welcome {
-    background-image: url(../images/amgang212.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#page404 {
-    background-image: url(../images/bg.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
+@import 'forms.css';
+@import 'pages.css';
+@import 'buttons.css';
 
 nav {
     color: black;
 }
 
-.regForm {
-    background-color: rgba(0, 0, 0, 0.5);
-	padding: 40px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #000;
-	position: absolute;
-	width: 500px;
-    height: 300px;
-}
-
-.regForm2 {
-    background-color: rgba(0, 0, 0, 0.5);
-	padding: 40px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #000;
-	position: absolute;
-	width: 500px;
-    height: 500px;
-}
-
-.profForm {
-    margin-left: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-	padding: 40px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #000;
-	position: absolute;
-	width: 50%;
-    height: 470px;
-}
-
-.logForm {
-    background-color: rgba(0, 0, 0, 0.5);
-	padding: 40px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #000;
-	position: absolute;
-	width: 500px;
-    height: 270px;
-}
-
-.pstForm {
-    background-color: rgba(0, 0, 0, 0.5);
-	padding: 40px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #000;
-	position: absolute;
-	width: 500px;
-}
-
-label{
-    color:white;
-}
-
-input[type='file'] {
-   color: transparent;
-}
-
-#logoutBtn {
-    color: black;
-    margin-right: 10px;
+label {
+    color: white;
 }
 
 .errorlist.nonfield {
-    color:red;
-}
-
-#searchField {
-    display:none;
-    margin-left: -15px;
-    width: 40%;
+    color: red;
 }
 
 #id_searched {
@@ -144,30 +24,17 @@ input[type='file'] {
 }
 
 .dashImg {
-    object-fit: cover;
+    object-fit: contain;
     width: 234px;
-    height: 151px;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-.likeLink:hover {
-    background:green;
-}
-
-
-.dislikeLink:hover {
-    color:red;
+    height: 100%;
 }
 
 p.file-upload {
-    color:white;
+    color: white;
 }
 
-p.file-upload a{
-    color:white;
+p.file-upload a {
+    color: white;
 }
 
 .errorlist {
@@ -179,5 +46,9 @@ input.form-control {
 }
 
 #delForm input {
-    color:lightgrey;
+    color: lightgrey;
+}
+
+input[type='file'] {
+    color: transparent;
 }

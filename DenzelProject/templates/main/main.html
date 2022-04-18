@@ -89,7 +89,7 @@
 <!-- Top menu -->
 <div id='topMenu'>
     <div class="w3-xlarge" style="max-width:1200px;margin:auto">
-        <div id="stripes" class="w3-button w3-padding-16 w3-left w3-display-topleft" onclick="w3_open()">☰</div>
+        <div style="position:fixed" id="stripes" class="w3-button w3-padding-16 w3-left w3-display-topleft" onclick="w3_open()">☰</div>
         {% if request.user.is_authenticated %}
             <a style="margin-top: 10px;" class="w3-display-topright" id="logoutBtn" href="{% url 'logout' %}">
                 <span class="glyphicon glyphicon-log-out "></span>

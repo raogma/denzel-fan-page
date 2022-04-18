@@ -18,7 +18,6 @@ class WelcomeView(TemplateView):
         return res
 
 
-
 def not_found_view(request, exception):
     return render(request, 'page404.html')
 
