@@ -1,6 +1,6 @@
 from django.contrib.staticfiles import finders
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from django.core.cache import cache
@@ -8,7 +8,7 @@ from DenzelProject.blogPost.forms import CreatePostForm, SearchDashForm, DeleteP
     UpCommentForm
 from DenzelProject.blogPost.models import Post, Comment, Like, Dislike
 from DenzelProject.utils import ReloadSamePageMixin, check_opposite_liking_exists, save_liking, \
-    LoadCommentsContextDataMixin, check_same_liking_exists
+    check_same_liking_exists, LoadCommentsMethodsMixin
 
 
 class DashView(ListView):
@@ -45,13 +45,29 @@ def dislike_fn(req, pk):
     return redirect('post-details', pk)
 
 
-class CommentsView(LoginRequiredMixin, CreateView, ReloadSamePageMixin, LoadCommentsContextDataMixin):
+class CommentsView(LoginRequiredMixin, CreateView, ListView, ReloadSamePageMixin, LoadCommentsMethodsMixin):
     template_name = 'posts/comments.html'
     model = Comment
     form_class = CommentForm
+    paginate_by = 3
 
     def get_success_url(self):
         return self.get_same_url()
+
+    def get_context_data(self, **kwargs):
+        queryset = kwargs.pop('object_list', None)
+        if queryset is None:
+            self.object_list = self.model.objects.select_related(
+                'post').filter(post_id=self.kwargs['pk']).order_by('-created')
+        ctx = super().get_context_data(**kwargs)
+        self.load_ctx(ctx)
+        ctx['post_pk'] = self.kwargs['pk']
+        return ctx
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = self.load_queryset(queryset)
+        return queryset
 
     def form_valid(self, form):
         res = super().form_valid(form)
@@ -62,36 +78,49 @@ class CommentsView(LoginRequiredMixin, CreateView, ReloadSamePageMixin, LoadComm
         obj.save()
         return res
 
-    def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(**kwargs)
-        self.load_ctx(ctx)
-        return ctx
+
+def delete_comment(request, pk, comment):
+    comment = Comment.objects.get(id=comment)
+    comment.delete()
+    return redirect('post-details-comments', pk)
 
 
-class DeleteCommentView(LoginRequiredMixin, DeleteView, ReloadSamePageMixin, LoadCommentsContextDataMixin):
-    template_name = 'posts/comments.html'
-    model = Comment
-    form_class = DelCommentForm
+# class DeleteCommentView(LoginRequiredMixin, DeleteView, ListView, ReloadSamePageMixin, LoadCommentsMethodsMixin):
+#     template_name = 'posts/comments.html'
+#     model = Comment
+#     form_class = DelCommentForm
+#     paginate_by = 3
 
-    def get_object(self, queryset=None):
-        return Comment.objects.get(id=self.kwargs['comment'])
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#         queryset = self.load_queryset(queryset)
+#         return queryset
 
-    def get_success_url(self):
-        return self.get_same_url()
+#     def get_object(self, queryset=None):
+#         return Comment.objects.get(id=self.kwargs['comment'])
 
-    def get_initial(self):
-        return {'content': self.object.content}
+#     def get_success_url(self):
+#         return self.get_same_url()
 
-    def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(**kwargs)
-        self.load_ctx(ctx)
-        return ctx
+#     def get_initial(self):
+#         return {'content': self.object.content}
+
+#     def get_context_data(self, **kwargs):
+#         ctx = super().get_context_data(**kwargs)
+#         self.load_ctx(ctx)
+#         return ctx
 
 
-class EditCommentView(LoginRequiredMixin, UpdateView, ReloadSamePageMixin, LoadCommentsContextDataMixin):
+class EditCommentView(LoginRequiredMixin, UpdateView, ListView, ReloadSamePageMixin, LoadCommentsMethodsMixin):
     template_name = 'posts/comments.html'
     model = Comment
     form_class = UpCommentForm
+    paginate_by = 3
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = self.load_queryset(queryset)
+        return queryset
 
     def get_object(self, queryset=None):
         return Comment.objects.get(id=self.kwargs['comment'])
@@ -100,6 +129,9 @@ class EditCommentView(LoginRequiredMixin, UpdateView, ReloadSamePageMixin, LoadC
         return self.get_same_url()
 
     def get_context_data(self, **kwargs):
+        queryset = kwargs.pop('object_list', None)
+        if queryset is None:
+            self.object_list = self.model.objects.select_related('post').filter(post_id=self.kwargs['pk']).order_by('-created')
         ctx = super().get_context_data(**kwargs)
         self.load_ctx(ctx)
         return ctx

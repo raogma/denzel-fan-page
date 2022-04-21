@@ -83,8 +83,7 @@ class ApplyStyleMixin:
 class ReloadSamePageMixin:
     def get_same_url(self):
         post_pk = self.kwargs['pk']
-        page_pk = self.kwargs['page']
-        return reverse_lazy('post-details-comments', kwargs={'pk': int(post_pk), 'page': int(page_pk)})
+        return reverse_lazy('post-details-comments', kwargs={'pk': int(post_pk)})
 
 
 def save_liking(req, pk, CurrentObject):
@@ -114,16 +113,16 @@ def check_same_liking_exists(req, pk, CurrentObject):
         return 'deleted'
 
 
-class LoadCommentsContextDataMixin:
+class LoadCommentsMethodsMixin:
     def load_ctx(self, ctx):
         post_pk = self.kwargs['pk']
-        post = Post.objects.get(pk=post_pk)
-        filtered_comments = Comment.objects.select_related('post').filter(post_id=post).order_by('-created')
-
-        paginator = Paginator(filtered_comments, per_page=3)
-        page = self.kwargs['page']
-        ctx['object_list'] = paginator.get_page(int(page))
         ctx['post_pk'] = post_pk
+
+    def load_queryset(self, queryset):
+        post_pk = self.kwargs['pk']
+        post = Post.objects.get(pk=post_pk)
+        queryset = queryset.select_related('post').filter(post_id=post).order_by('-created')
+        return queryset
 
 
 class CreateUserMixin:

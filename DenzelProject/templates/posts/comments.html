@@ -1,14 +1,18 @@
 {% extends 'main/mainClean.html' %}
+{% load static %}
 {% block contentClean %}
     <body id="pstdet">
+    <div class="w3-overlay" style="cursor:pointer;" id="myOverlay"></div>
+
     <a id="backArrow" href="{% url 'post-details' post_pk %}" class="w3-button w3-padding-16 w3-left">
-     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-arrow-left"
-                 viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-            </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+             class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+        </svg>
     </a>
-    <div style="width: 600px; padding-bottom: 350px; padding-top: 100px;" class="w3-container w3-card w3-white w3-round w3-display-middle"><br>
+    <div style="width: 600px; padding-bottom: 350px; padding-top: 100px;"
+         class="w3-container w3-card w3-white w3-round w3-display-middle"><br>
 
         <div style="height:500px; margin-top: 150px;" class="w3-container w3-display-top" id="comments">
             <div class="w3-container w3-card w3-white w3-margin-bottom">
@@ -23,8 +27,9 @@
                                 <div style="float:right" class="w3-dropdown-hover">
                                     <button class="w3-button w3-ripple w3-white">&#8285;</button>
                                     <div class="w3-dropdown-content w3-bar-block w3-border">
-                                        <a href="{% url 'post-edit-comments' comment.post_id comment.pk object_list.number %}" class="w3-bar-item w3-button editBtn">Edit</a>
-                                        <a href="{% url 'post-delete-comments' comment.post_id comment.pk object_list.number %}" class="w3-bar-item w3-button delBtn">Delete</a>
+                                        <a href="{% url 'post-edit-comments' comment.post_id comment.pk %}"
+                                           class="w3-bar-item w3-button editBtn">Edit</a>
+                                        <button id="deleteCommentBtn-{{post_pk}}-{{comment.pk}}" class="w3-bar-item w3-button delBtn">Delete</button>
                                     </div>
                                 </div>
                             {% endif %}
@@ -42,15 +47,15 @@
                 <!-- Pagination -->
                 <div class="w3-center w3-padding-32">
                     <div class="w3-bar">
-                        {% if object_list.has_previous %}
+                        {% if page_obj.has_previous %}
                             <a class="w3-bar-item w3-button w3-hover-black"
-                               href="{% url 'post-details-comments' post_pk object_list.previous_page_number %}">«</a>
+                               href="?page={{ page_obj.previous_page_number }}">«</a>
                         {% endif %}
-                        <span class="w3-bar-item w3-button w3-black">{{ object_list.number }}</span>
+                        <span class="w3-bar-item w3-button w3-black">{{ page_obj.number }}</span>
 
-                        {% if object_list.has_next %}
+                        {% if page_obj.has_next %}
                             <a class="w3-bar-item w3-button w3-hover-black"
-                               href="{% url 'post-details-comments' post_pk object_list.next_page_number %}">»</a>
+                               href="?page={{ page_obj.next_page_number }}">»</a>
                         {% endif %}
                     </div>
                 </div>
@@ -65,10 +70,9 @@
         </div>
     </div>
     </body>
+    <script src="{% static 'javascript/confirm-delete-comment.js' %}"></script>
     <script>
-        let h1 = document.querySelector('#topMenu h1')
-        h1.style.color = 'black';
-        h1.style.zIndex = '1';
-        h1.className += ' w3-display-topmiddle'
+        document.querySelector('.errorlist').style.color='black';
+        document.querySelector('form label').style.color='black';
     </script>
 {% endblock %}

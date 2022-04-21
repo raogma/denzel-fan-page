@@ -40,3 +40,12 @@ a:hover {
     bottom: 20px;
     right: 50%;
 }
+
+#backArrow {
+    background: transparent;
+    position: fixed;
+}
+
+#backArrow svg {
+    color:white;
+}
