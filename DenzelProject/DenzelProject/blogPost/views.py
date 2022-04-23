@@ -17,15 +17,15 @@ class DashView(ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        queryset = cache.get('queryset')
-        if queryset is None:
-            queryset = super().get_queryset().select_related('owner').order_by('-created')
-            cache.set('queryset', queryset)
+        queryset_posts = cache.get('queryset')
+        if queryset_posts is None:
+            queryset_posts = super().get_queryset().select_related('owner').order_by('-created')
+            cache.set('queryset', queryset_posts)
 
         title_filter = self.request.GET.get('searched')
         if title_filter:
-            queryset = queryset.filter(header__contains=title_filter)
-        return queryset
+            queryset_posts = queryset_posts.filter(header__contains=title_filter)
+        return queryset_posts
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
