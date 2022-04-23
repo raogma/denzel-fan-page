@@ -22,22 +22,22 @@ def delete_user_after_profile(**kwargs):
     user.delete()
 
 @receiver(post_save, sender=Post)
-def clear_cache(**kwargs):
+def clear_cache_post(**kwargs):
     cache.clear()
 
 
 @receiver(post_delete, sender=Post)
-def clear_cache(**kwargs):
+def clear_cache_post(**kwargs):
     cache.clear()
 
 
     
 @receiver(post_save, sender=Comment)
-def clear_cache(**kwargs):
+def clear_cache_comment(**kwargs):
     cache.clear()
 
 
 @receiver(post_delete, sender=Comment)
-def clear_cache(**kwargs):
+def clear_cache_comment(**kwargs):
     cache.clear()
     
