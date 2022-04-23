@@ -97,19 +97,12 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = []
 
 CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient"
-        },
-        "KEY_PREFIX": "example"
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
     }
 }
 
-data = {
-
-}
 cloudinary.config(
     cloud_name=config('cl_cloud_name'),
     api_key=config('cl_api_key'),
@@ -120,7 +113,7 @@ cloudinary.config(
 if is_production():
     DATABASES = {
         'default': {
-            'ENGINE': config('db_ENGINE'),
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': config('db_NAME'),
             'USER': config('db_USER'),
             'PASSWORD': config('db_PASSWORD'),
@@ -130,13 +123,9 @@ if is_production():
     }
 
     CACHES = {
-        "default": {
-            "BACKEND": config('cache_BACKEND'),
-            "LOCATION": config('cache_LOCATION'),
-            "OPTIONS": {
-                "CLIENT_CLASS": config('cache_CLIENT_CLASS')
-            },
-            "KEY_PREFIX": "example"
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': config('cache_location'),
         }
     }
 

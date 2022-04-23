@@ -113,18 +113,6 @@ def check_same_liking_exists(req, pk, CurrentObject):
         return 'deleted'
 
 
-class LoadCommentsMethodsMixin:
-    def load_ctx(self, ctx):
-        post_pk = self.kwargs['pk']
-        ctx['post_pk'] = post_pk
-
-    def load_queryset(self, queryset):
-        post_pk = self.kwargs['pk']
-        post = Post.objects.get(pk=post_pk)
-        queryset = queryset.select_related('post').filter(post_id=post).order_by('-created')
-        return queryset
-
-
 class CreateUserMixin:
     user_credentials = {
         'email': 'test@gmail.com',
