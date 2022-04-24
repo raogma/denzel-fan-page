@@ -1,0 +1,54 @@
+@import url("forms.71e765119e29.css");
+@import url("pages.c972b7af29d1.css");
+@import url("buttons.ffc7b17dee81.css");
+
+nav {
+    color: black;
+}
+
+label {
+    color: white;
+}
+
+.errorlist.nonfield {
+    color: red;
+}
+
+#id_searched {
+    padding: 18px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashImg {
+    object-fit: contain;
+    width: 234px;
+    height: 100%;
+}
+
+p.file-upload {
+    color: white;
+}
+
+p.file-upload a {
+    color: white;
+}
+
+.errorlist {
+    color: white;
+}
+
+input.form-control {
+    margin-bottom: 20px;
+}
+
+#delForm input {
+    color: lightgrey;
+}
+
+input[type='file'] {
+    color: transparent;
+}

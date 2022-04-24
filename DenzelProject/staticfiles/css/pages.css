@@ -1,0 +1,58 @@
+#eqdash {
+    background-image: url(../images/eqdash.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-x: 150px;
+    background-position-y: -70px;
+}
+
+#contactspage {
+    color: white;
+    background-image: url(../images/trainingday2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#logoutpage {
+    color: white;
+    background-image: url(../images/flight.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#reg {
+    background-image: url(../images/eqend.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#profdet {
+    background-image: url(../images/profdet2.jpg);
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
+#crpstpage {
+    background-image: url(../images/trainingday.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#pstdet {
+    background-image: url(../images/m_merged.png);
+    background-size: 170%;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+#welcome {
+    background-image: url(../images/amgang212.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#page404 {
+    background-image: url(../images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

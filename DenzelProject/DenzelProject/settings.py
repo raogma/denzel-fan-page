@@ -17,7 +17,7 @@ def is_production():
 
 SECRET_KEY = 'something-not-important'
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
