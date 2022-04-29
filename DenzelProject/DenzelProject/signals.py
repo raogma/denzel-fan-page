@@ -5,14 +5,19 @@ from DenzelProject.profileApp.models import Profile
 from DenzelProject.blogPost.models import Post
 from DenzelProject.blogPost.models import Comment
 from django.core.cache import cache
+from DenzelProject.tasks import send_welcome_email
 
 
 @receiver(post_save, sender=get_user_model())
-def create_profile_after_user_register(sender, instance, created, **kwargs):
-    if created:
-        profile = Profile(
-            user=instance
-        )
+def send_email_after_user_creation(**kwargs):
+    if kwargs['created']:
+        send_welcome_email.delay(kwargs['instance'].pk)
+
+
+@receiver(post_save, sender=get_user_model())
+def create_profile_after_user_register(**kwargs):
+    if kwargs['created']:
+        profile = Profile(user=kwargs['instance'])
         profile.save()
 
 

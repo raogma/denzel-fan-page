@@ -110,6 +110,19 @@ cloudinary.config(
     secure='True',
 )
 
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('email_user')
+EMAIL_HOST_PASSWORD = config('email_password')
+
 if is_production():
     DATABASES = {
         'default': {
@@ -128,6 +141,10 @@ if is_production():
             'LOCATION': config('cache_location'),
         }
     }
+
+    CELERY_BROKER_URL = config('cache_location')
+    CELERY_RESULT_BACKEND = config('cache_location')
+    
 
     AUTH_PASSWORD_VALIDATORS = [
         {

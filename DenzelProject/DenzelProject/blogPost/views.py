@@ -2,10 +2,9 @@ from django.contrib.staticfiles import finders
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView, TemplateView
 from django.core.cache import cache
-from DenzelProject.blogPost.forms import CreatePostForm, SearchDashForm, DeletePostForm, CommentForm, DelCommentForm, \
-    UpCommentForm
+from DenzelProject.blogPost.forms import CreatePostForm, SearchDashForm, DeletePostForm, CommentForm, UpCommentForm
 from DenzelProject.blogPost.models import Post, Comment, Like, Dislike
 from DenzelProject.utils import ReloadSamePageMixin, check_opposite_liking_exists, save_liking, \
     check_same_liking_exists
