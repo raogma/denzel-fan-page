@@ -5,7 +5,7 @@ from DenzelProject.profileApp.models import Profile
 from DenzelProject.blogPost.models import Post
 from DenzelProject.blogPost.models import Comment
 from django.core.cache import cache
-from DenzelProject.tasks import send_welcome_email
+from DenzelProject.profileApp.tasks import send_welcome_email
 
 
 @receiver(post_save, sender=get_user_model())
