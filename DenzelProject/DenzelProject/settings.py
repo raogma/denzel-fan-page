@@ -17,7 +17,7 @@ def is_production():
 
 SECRET_KEY = 'something-not-important'
 
-DEBUG = 'False'
+DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
@@ -201,22 +201,35 @@ LOGIN_URL = reverse_lazy('login')
 
 # LOGGING = {
 #     'version': 1,
-#     'filters': {
-#         'require_debug_true': {
-#             '()': 'django.utils.log.RequireDebugTrue',
-#         }
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'verbose': {
+#             'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+#             'datefmt' : "%d/%b/%Y %H:%M:%S"
+#         },
+#         'simple': {
+#             'format': '%(levelname)s %(message)s'
+#         },
 #     },
 #     'handlers': {
-#         'console': {
+#         'file': {
 #             'level': 'DEBUG',
-#             'filters': ['require_debug_true'],
-#             'class': 'logging.StreamHandler',
-#         }
+#             'class': 'logging.FileHandler',
+#             'filename': 'mysite.log',
+#             'formatter': 'verbose'
+#         },
 #     },
 #     'loggers': {
-#         'django.db.backends': {
+#         'django': {
+#             'handlers':['file'],
+#             'propagate': True,
+#             'level':'DEBUG',
+#         },
+#         'MYAPP': {
+#             'handlers': ['file'],
 #             'level': 'DEBUG',
-#             'handlers': ['console'],
-#         }
+#         },
 #     }
 # }
+
+

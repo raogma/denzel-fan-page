@@ -1,0 +1,20 @@
+{% extends 'main/mainForm.html' %}
+
+{% block formContent %}
+
+<body id="eqdash">
+    <header style="opacity: 0.5; width: 100%; padding: 10px;" class="w3-container w3-center w3-display-middle"
+            style="padding:128px 16px">
+        <h1 style="color:black" class="w3-margin w3-jumbo">HTTP: 403</h1>
+        <h1 style="color:black" class="w3-margin w3-jumbo">You are not authorized to access this page.</h1>
+        <a style="font-size: 50px; color:black" href="{% url 'posts' %}">Home</a>
+        <a style="font-size: 50px; color:black" href="{% url 'login' %}">Login</a>
+        <a style="font-size: 50px; color:black" href="{% url 'register' %}">Register</a>
+    </header>
+</body>
+<script>
+    let topMenu = document.querySelector('#topMenu');
+    topMenu.querySelector('#backArrow').style.color = 'black';
+    topMenu.querySelector('h1').style.color = 'black';
+</script>
+{% endblock %}
