@@ -1,3 +1,3 @@
-web: gunicorn --pythonpath DenzelProject DenzelProject.wsgi
-worker: celery worker --app=DenzelProject DenzelProject.celery.app -l info
+web: gunicorn --pythonpath DenzelProject DenzelProject.wsgi -l debug
+celery: celery worker -A DenzelProject -l info
 release: python DenzelProject/manage.py migrate
