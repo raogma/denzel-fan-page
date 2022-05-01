@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/
-/home/rei/Documents/denzel-fan-page/postgresql/
+postgresql/
 docker-compose.yml
