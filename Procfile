@@ -1,1 +1,2 @@
-web: env > .env; env PYTHONUNBUFFERED=true honcho start -f Procfile.real 2>&1
+web: gunicorn --pythonpath DenzelProject DenzelProject.wsgi
+release: python DenzelProject/manage.py migrate
