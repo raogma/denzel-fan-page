@@ -1,4 +1,1 @@
-web: gunicorn --pythonpath DenzelProject DenzelProject.wsgi
-release: python DenzelProject/manage.py migrate
-worker: python DenzelProject/manage.py celery worker --loglevel=info
-beat: python DenzelProject/manage.py celery beat --loglevel=info
+web: env > .env; env PYTHONUNBUFFERED=true honcho start -f Procfile.real 2>&1
