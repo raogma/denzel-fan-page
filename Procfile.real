@@ -1,4 +1,4 @@
-web: gunicorn DenzelProject.DenzelProject.wsgi --log-file -
+web: gunicorn DenzelProject.DenzelProject.wsgi
 release: python DenzelProject/manage.py migrate
 worker: python DenzelProject/manage.py celery worker --loglevel=info
 beat: python DenzelProject/manage.py celery beat --loglevel=info
