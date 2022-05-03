@@ -11,7 +11,8 @@ from DenzelProject.tasks import send_welcome_email
 @receiver(post_save, sender=get_user_model())
 def send_email_after_user_creation(**kwargs):
     if kwargs['created']:
-        send_welcome_email.delay(kwargs['instance'].pk)
+        send_welcome_email(kwargs['instance'].pk)
+        # send_welcome_email.delay(kwargs['instance'].pk)
 
 
 @receiver(post_save, sender=get_user_model())

@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
 
 
-@shared_task
+# @shared_task
 def send_welcome_email(user_pk):
     user = get_user_model().objects.get(id=user_pk)
     context = {
