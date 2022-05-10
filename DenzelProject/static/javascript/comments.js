@@ -1,7 +1,7 @@
 import {sendRequest} from './requestControl.js';
 import { loadPagination } from './paginationTemplate.js';
-import { loadDialogBox } from './deleteDialogBox.js';
-import { hideDialogBox } from './deleteDialogBox.js';
+import { loadDialogBox } from './dialogBox.js';
+import { hideDialogBox } from './dialogBox.js';
 import { loadComment } from './commentTemplate.js';
 
 const postPk = window.location.pathname.split('/')[3];
@@ -12,12 +12,27 @@ const dialogBox = document.querySelector('#dialogBox');
 const commentsContainer = document.querySelector('#commentsContainer');
 const commentsPagination = document.querySelector('#comment-pagination-container');
 const url = `/posts/details/${postPk}/commentsREST/`;
+const overlay = document.querySelector("#myOverlay");
+const commentButton = document.querySelector('#showComments');
+const commentsGlobal = document.querySelector('#comments');
+
 let commentsData = {
     //position: div
 }
 
 
-await loadComments(url)
+overlay.addEventListener('click', ev => {
+    hideDialogBox('any');
+})
+
+await loadComments(url);
+
+
+commentButton.addEventListener('click', ev => {
+    commentsGlobal.style.display === 'none' ?
+        commentsGlobal.style.display = 'block' :
+        commentsGlobal.style.display = 'none'
+})
 
 commentsPagination.addEventListener('click', (ev) => {
     if(ev.target.tagName == 'BUTTON'){loadComments(ev.target.id);}
@@ -61,7 +76,9 @@ function commentListener(ev) {
 
         }
         else if (target.innerHTML === 'Delete'){
-            loadDialogBox(ev.target.parentElement.id.split('-')[2]);
+            loadDialogBox('#deleteDialogBox');
+            let commentId = ev.target.parentElement.id.split('-')[2];
+            document.getElementById("deleteDialogBox").querySelector('button[value="delete"]').id = 'delCommentBtn-' + commentId;
             dialogBox.addEventListener('click', deleteCommentListener)
         }
     }
@@ -70,6 +87,10 @@ function commentListener(ev) {
 
 async function createCommentListener(ev){
     ev.preventDefault();
+    if (user === 'None'){
+        loadDialogBox('#authDialogBox');
+        return;
+    }
     let content = ev.target.querySelector('input').value;
     const body = {
         content,
@@ -83,6 +104,10 @@ async function createCommentListener(ev){
 
 async function editCommentListener(ev){
     ev.preventDefault();
+    if (user === 'None'){
+        loadDialogBox('#authDialogBox');
+        return;
+    }
     if (ev.target.tagName === 'BUTTON'){
         let btnName = ev.target.innerHTML.trim();
         if(btnName === 'Cancel') {
@@ -104,11 +129,11 @@ async function deleteCommentListener(ev){
     if (ev.target.tagName === 'BUTTON'){
         let btnName = ev.target.innerHTML.trim();
         if(btnName === 'Cancel') {
-            hideDialogBox();
+            hideDialogBox('#deleteDialogBox');
         } else if (btnName === 'Delete') {
             await sendRequest(url + ev.target.id.split('-')[1] + '/', 'DELETE', undefined, csrf_token);
             await loadComments(url);
-            hideDialogBox();
+            hideDialogBox('#deleteDialogBox');
         }
     }
 }

@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('DenzelProject.mainApp.urlsMain')),
     path('profile/', include('DenzelProject.profileApp.urlsProfile')),
     path('posts/', include('DenzelProject.blogPost.urlsPost')),
+    path('api-auth/', include('rest_framework.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 import DenzelProject.signals
