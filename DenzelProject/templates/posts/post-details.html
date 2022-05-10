@@ -46,7 +46,7 @@
                    class="w3-button w3-theme-d1 w3-margin-bottom"><i
                         class="fa fa-thumbs-down"></i>
                      Dislike: {{ dislikes_count }}</a>
-                <a style="padding: 8px 12px;" href="{% url 'post-details-comments' object.pk %}" type="button"
+                <a style="padding: 8px 12px;" href="{% url 'comments' object.pk %}" type="button"
                    class="w3-button w3-theme-d2 w3-margin-bottom"><i
                         class="fa fa-comment"></i>
                      Comments: {{ comments_count }}
@@ -59,7 +59,7 @@
                         class="fa fa-thumbs-down"></i>
                      Dislikes: {{ dislikes_count }}</p>
 
-                <a style="padding: 8px 12px; margin-top: 20px;" href="{% url 'post-details-comments' object.pk %}" type="button"
+                <a style="padding: 8px 12px; margin-top: 20px;" href="{% url 'comments' object.pk %}" type="button"
                    class="w3-button w3-theme-d2 w3-margin-bottom"><i
                         class="fa fa-comment"></i>
                      Comments: {{ comments_count }}

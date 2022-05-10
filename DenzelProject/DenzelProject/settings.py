@@ -17,7 +17,7 @@ def is_production():
 
 SECRET_KEY = 'something-not-important'
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
@@ -43,12 +43,21 @@ PROJECT_APPS = [
     'DenzelProject.mainApp',
     'DenzelProject.blogPost',
     'DenzelProject.profileApp',
-    'cloudinary'
+    'cloudinary',
+    'rest_framework',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3
+}
+
+
 MIDDLEWARE = [
+    # 'DenzelProject.middlewares.modify_context',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -181,13 +190,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

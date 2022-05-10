@@ -6,13 +6,6 @@
     background-position-y: -70px;
 }
 
-#contactspage {
-    color: white;
-    background-image: url(../images/trainingday2.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
 #logoutpage {
     color: white;
     background-image: url(../images/flight.jpg);

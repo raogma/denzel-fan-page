@@ -7,10 +7,11 @@
 }
 
 #contactspage {
-    color: white;
+    color: black;
     background-image: url(../images/trainingday2.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
+    max-width: 100%;
 }
 
 #logoutpage {

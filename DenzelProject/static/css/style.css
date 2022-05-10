@@ -1,6 +1,7 @@
 @import 'forms.css';
 @import 'pages.css';
 @import 'buttons.css';
+@import 'contactsPage.css';
 
 nav {
     color: black;

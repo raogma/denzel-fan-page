@@ -1,0 +1,23 @@
+#contactspage {
+    color: white;
+    background-image: url(../images/trainingday2.jpg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    min-height: 400px;
+    background-size: 100%;
+}
+
+#contactsContainer {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
+    max-width:600px;
+    padding: 1.5em;
+    margin-top: 5%;
+}
+
+/* #contactRow {
+    display: inline-flex;
+    align-items: center;
+} */
