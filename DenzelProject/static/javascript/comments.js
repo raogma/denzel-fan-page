@@ -8,7 +8,7 @@ const postPk = window.location.pathname.split('/')[3];
 const user = document.querySelector('#user').value;
 const csrf_token = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
-const dialogBox = document.querySelector('#dialogBox');
+const dialogBox = document.querySelector('#deleteDialogBox');
 const commentsContainer = document.querySelector('#commentsContainer');
 const commentsPagination = document.querySelector('#comment-pagination-container');
 const url = `/posts/details/${postPk}/commentsREST/`;
