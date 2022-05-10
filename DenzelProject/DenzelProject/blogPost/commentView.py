@@ -30,7 +30,5 @@ class CommentDetailRest(RetrieveUpdateDestroyAPIView):
     serializer_class = CommentsSerializer
     permission_classes = (IsAuthenticated,)
     
-
     def get_object(self):
-        comment = Comment.objects.get(id=self.kwargs['commentPk']) 
-        return comment
+        return Comment.objects.get(id=self.kwargs['commentPk']) 

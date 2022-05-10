@@ -12,7 +12,7 @@ const dialogBox = document.querySelector('#dialogBox');
 const commentsContainer = document.querySelector('#commentsContainer');
 const commentsPagination = document.querySelector('#comment-pagination-container');
 const url = `/posts/details/${postPk}/commentsREST/`;
-const overlay = document.querySelector("#myOverlay");
+const overlay = document.querySelector("#notMyOverlay");
 const commentButton = document.querySelector('#showComments');
 const commentsGlobal = document.querySelector('#comments');
 
