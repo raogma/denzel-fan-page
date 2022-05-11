@@ -31,19 +31,6 @@
     background-size: 100%;
 }
 
-#pstdet {
-    background-image: url(../images/m_merged.png);
-    background-size: 170%;
-    background-position-x: center;
-    background-repeat: no-repeat;
-}
-
-#welcome {
-    background-image: url(../images/amgang212.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
 #page404 {
     background-image: url(../images/bg.jpg);
     background-repeat: no-repeat;

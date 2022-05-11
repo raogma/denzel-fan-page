@@ -1,7 +1,10 @@
 @import 'forms.css';
 @import 'pages.css';
 @import 'buttons.css';
-@import 'contactsPage.css';
+@import 'contacts-page.css';
+@import 'post-details-page.css';
+@import 'welcome-page.css';
+
 
 nav {
     color: black;

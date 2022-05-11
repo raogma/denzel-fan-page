@@ -30,9 +30,9 @@
         }
     </style>
 </head>
+
 <div class="w3-overlay" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-<!-- Navigation -->
-<div class="w3-sidebar w3-bar-block w3-blue-grey" style="display:none;z-index:5" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-blue-grey" style="float:left; display:none;z-index:5" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large"
             onclick="w3_close()">Close &times;
     </button>
@@ -85,8 +85,7 @@
             Login
         </a>
     {% endif %}
-
-</div>
+</nav>
 
 <!-- Top menu -->
 <div id='topMenu'>
@@ -102,6 +101,7 @@
 </div>
 
 {% block content %}
+
 {% endblock %}
 
 <script>

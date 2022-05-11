@@ -12,4 +12,3 @@ export function hideDialogBox(targetBox) {
     }
     document.querySelector(targetBox).style.display = "none";
 }
-
