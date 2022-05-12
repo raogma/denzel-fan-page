@@ -19,12 +19,6 @@
     background-size: 100%;
 }
 
-#profdet {
-    background-image: url(../images/profdet2.jpg);
-    background-repeat: repeat-y;
-    background-size: 100%;
-}
-
 #crpstpage {
     background-image: url(../images/trainingday.jpg);
     background-repeat: no-repeat;

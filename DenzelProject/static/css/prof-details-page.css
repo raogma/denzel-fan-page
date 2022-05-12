@@ -1,0 +1,20 @@
+#profdet {
+    background-image: url(../images/eqend.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    color:white;
+}
+
+#topMenu {
+    color:white;
+}
+
+#logoutBtn {
+    color:white;
+}
+
+#heading {
+    color:white!important;
+    font-size: 7rem;
+}
