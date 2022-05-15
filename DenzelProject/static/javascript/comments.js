@@ -31,10 +31,10 @@ await loadComments(url);
 commentButton.addEventListener('click', ev => {
     if(commentsGlobal.style.display === 'none'){
         commentsGlobal.style.display = 'block';
-        document.querySelector('.comment-div').style.height = 'fit-content';
+        document.querySelector('#pst-div').style.height = 'fit-content';
     } else {
         commentsGlobal.style.display = 'none';
-        document.querySelector('.comment-div').style.height = '100vh';
+        document.querySelector('#pst-div').style.height = 'fit-content';
     }
 })
 

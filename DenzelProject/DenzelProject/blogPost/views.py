@@ -1,10 +1,9 @@
-from django.contrib.staticfiles import finders
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView, TemplateView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from django.core.cache import cache
-from DenzelProject.blogPost.forms import CreatePostForm, SearchDashForm, DeletePostForm, CommentForm, UpCommentForm
+from DenzelProject.blogPost.forms import CreatePostForm, SearchDashForm, DeletePostForm
 from DenzelProject.blogPost.models import Post, Comment, Like, Dislike
 from DenzelProject.utils import check_opposite_liking_exists, save_liking, \
     check_same_liking_exists
@@ -23,7 +22,7 @@ class DashView(ListView):
 
         title_filter = self.request.GET.get('searched')
         if title_filter:
-            queryset_posts = queryset_posts.filter(header__contains=title_filter)
+            queryset_posts = queryset_posts.filter(header__icontains=title_filter)
         return queryset_posts
 
     def get_context_data(self, *args, **kwargs):

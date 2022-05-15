@@ -1,49 +1,8 @@
-.regForm {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 40px;
+.form {
+    padding: 3rem;
     border-radius: 5px;
     box-shadow: 0 0 10px #000;
-    position: absolute;
-    width: 500px;
-    height: 300px;
-}
-
-.regForm2 {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #000;
     position: absolute;
-    width: 500px;
-    height: 500px;
-}
-
-.profForm {
-    margin-left: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #000;
-    position: absolute;
-    width: 50%;
-    height: 470px;
-}
-
-.logForm {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #000;
-    position: absolute;
-    width: 500px;
-    height: 270px;
-}
-
-.pstForm {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #000;
-    position: absolute;
-    width: 500px;
+    width: 30%;
 }

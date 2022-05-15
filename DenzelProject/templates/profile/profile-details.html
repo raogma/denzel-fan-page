@@ -3,10 +3,7 @@
 {% block content %}
     <body id="profdet">
 
-    <!-- Page Content -->
-    <div style="box-shadow: 0 0 10px #000;background-color: rgba(0, 0, 0, 0.2);" class="w3-padding-large" id="main">
-        <div style="margin-top: 100px;">
-            <!-- Header/Home -->
+        <div id="prof-containter">
             <header class="w3-container w3-padding-32 w3-center" id="home">
                 {% if object.profile.get_name %}
                     <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> {{ object.profile.get_name }}</h1>
@@ -18,16 +15,10 @@
                     <img src="{% static 'images/defaultprofilepic.jpg' %}" alt="boy" class="w3-image">
 
                 {% endif %}
-                {#                    <div class="progress-bar-container">#}
-                {#                    <div class="progress-bar">#}
-                {#                        <div class="value" style="width: 35%">#}
-                {##}
-                {#                        </div>#}
-                {#                    </div>#}
             </header>
             <div style="display:flex; flex-direction: row; justify-content: center">
                 <a href="{% url 'edit-profile' request.user.pk %}"
-                   class="w3-button w3-light-grey w3-padding-large w3-section">
+                   class="w3-button w3-light-grey w3-padding-large w3-section hov-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-pencil" viewBox="0 0 16 16">
                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
@@ -35,7 +26,7 @@
                     Update Profile
                 </a>
                 <a href="{% url 'delete-profile' request.user.pk %}"
-                   class="w3-button w3-light-grey w3-padding-large w3-section">
+                   class="w3-button w3-light-grey w3-padding-large w3-section hov-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -47,7 +38,7 @@
             </div>
 
             <!-- About Section -->
-            <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+            <div class="w3-content w3-justify w3-text-grey w3-padding-64">
                 <h2 class="w3-text-light-grey">Profile Information</h2>
                 <hr style="width:200px" class="w3-opacity">
 
@@ -83,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="w3-content w3-justify w3-text-grey w3-padding-64">
+            <div class="w3-content w3-justify w3-text-grey">
                 <!-- Portfolio Section -->
                 <div class="w3-padding-64 w3-content" id="photos">
                     <h2 class="w3-text-light-grey">My Posts</h2>
@@ -96,11 +87,9 @@
                         <div class="w3-half">
                             <a href="{% url 'post-details' post.pk %}">
                                 {% if post.image %}
-                                    <img style="width:100%" class="w3-round" src="{{ post.image.url }}"
-                                         alt="{{ post.description }}">
+                                    <img class="profImg" class="w3-round" src="{{ post.image.url }}">
                                 {% else %}
-                                    <img style="width:100%" class="w3 -round" src="{% static 'images/target.jpg' %}"
-                                         alt="{{ post.description }}">
+                                    <img class="profImg" class="w3-round" src="{% static 'images/target.jpg' %}">
                                 {% endif %}
                             </a>
                         </div>
@@ -109,8 +98,9 @@
             </div>
         </div>
 
-    </div>
 
     </body>
-
+    <script>
+        document.querySelector('#heading').style.color = 'white';
+    </script>
 {% endblock %}

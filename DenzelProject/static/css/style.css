@@ -5,6 +5,7 @@
 @import 'post-details-page.css';
 @import 'welcome-page.css';
 @import 'prof-details-page.css';
+@import 'dashboard-page.css';
 
 
 
@@ -27,12 +28,6 @@ label {
 .row {
     display: flex;
     flex-direction: row;
-}
-
-.dashImg {
-    object-fit: contain;
-    width: 234px;
-    height: 100%;
 }
 
 p.file-upload {

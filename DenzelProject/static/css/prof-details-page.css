@@ -6,15 +6,27 @@
     color:white;
 }
 
-#topMenu {
-    color:white;
-}
-
-#logoutBtn {
-    color:white;
-}
-
 #heading {
-    color:white!important;
     font-size: 7rem;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.profImg{
+    width: 100%;
+}
+
+.profImg:hover {
+    display: block;
+    float: left;
+    box-shadow: 7px 7px 10px #607d8b;
+}
+
+
+.hov-btn:hover {
+    background-color: #607D81!important;
 }

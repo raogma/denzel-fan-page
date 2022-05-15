@@ -24,7 +24,7 @@ ALLOWED_HOSTS = [
 ]
 
 if is_production():
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = [
         config('ALLOWED_HOSTS'),
     ]

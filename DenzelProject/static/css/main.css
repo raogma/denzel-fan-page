@@ -1,0 +1,29 @@
+#topMenu {
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#heading {
+    color:white;
+    font-family: 'Koulen', cursive;
+}
+
+#logoutBtn {
+    color:white;
+    font-size: xx-large;
+}
+
+#logoutBtn>span:hover {
+    background-color: transparent;
+    display: block;
+    box-shadow: 7px 7px 10px #607d8b;
+}
+
+#stripes {
+    font-size: xx-large;
+    color:white;
+    /* position: fixed; */
+}
