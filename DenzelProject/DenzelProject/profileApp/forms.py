@@ -166,6 +166,7 @@ class ChangePasswordForm(PasswordChangeForm, ApplyStyleMixin):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.apply_style_w3()
+        self.remove_help_text()
 
     class Meta:
         model = get_user_model()
