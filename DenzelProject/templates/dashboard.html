@@ -91,7 +91,10 @@
 <script src="{% static 'javascript/dashSearch.js'%}"></script>
 <script>
     document.querySelector('#heading').style.color = 'black';
-    document.querySelector('#logoutBtn').style.color = "black"
+    const logoutBtn = document.querySelector('#logoutBtn');
+    if (logoutBtn){
+        logoutBtn.style.color = "black";
+    }
     document.querySelector('#stripes').style.color = "black"
 </script>
 {% endblock %}

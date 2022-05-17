@@ -6,16 +6,6 @@
     color:white;
 }
 
-#heading {
-    font-size: 7rem;
-}
-
-#main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 .profImg{
     width: 100%;
 }
@@ -24,9 +14,4 @@
     display: block;
     float: left;
     box-shadow: 7px 7px 10px #607d8b;
-}
-
-
-.hov-btn:hover {
-    background-color: #607D81!important;
 }

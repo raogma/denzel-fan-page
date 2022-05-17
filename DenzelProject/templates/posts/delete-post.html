@@ -1,18 +1,17 @@
-{% extends 'main/mainForm.html' %}
+{% extends 'main/main.html' %}
 {% load static %}
-{% block formContent %}
+{% block content %}
 
 <body id="crpstpage">
-    <form class="form w3-display-bottommiddle" method="POST" class="w3-container"
-        enctype="multipart/form-data">
+    <form class="form w3-display-bottommiddle" method="POST" enctype="multipart/form-data">
         {% if object.image %}
             <img class="w3-display-topmiddle"
-                style="margin-top:20px; height:200px; width: 200px;float:right; object-fit: cover"
+                style="margin-top:20px; height:200px; width: 200px; object-fit: cover"
                 src="{{ object.image.url }}" alt="">
         {% else %}    
-        <img class="w3-display-topmiddle"
-        style="margin-top:20px; height:200px; width: 200px;float:right; object-fit: cover"
-        src="{% static 'images/target.jpg' %}" alt="">
+            <img class="w3-display-topmiddle"
+            style="margin-top:20px; height:200px; width: 200px; object-fit: cover"
+            src="{% static 'images/target.jpg' %}" alt="">
             
         {% endif %}
         <div style="padding-top: 10px;color:white; margin-top:170px;" class="w3-container">

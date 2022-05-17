@@ -34,7 +34,7 @@ commentButton.addEventListener('click', ev => {
         document.querySelector('#pst-div').style.height = 'fit-content';
     } else {
         commentsGlobal.style.display = 'none';
-        document.querySelector('#pst-div').style.height = 'fit-content';
+        document.querySelector('#pst-div').style.height = '100vh';
     }
 })
 

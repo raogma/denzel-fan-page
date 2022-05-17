@@ -1,13 +1,23 @@
-{% extends 'main/mainForm.html' %}
-{% block formContent %}
+{% extends 'main/main.html' %}
+{% load static %}
+{% block content %}
+
 <body id="crpstpage">
-    <form class="w3-container form w3-display-middle" method="POST" enctype="multipart/form-data">
-        <div style="padding-top: 10px;color:white" class="w3-container">
-          <h2 class="w3-center">Edit your Denzel story</h2>
-        </div>
-        {{ form }}
-        {% csrf_token %}
-        <button class="w3-button w3-block w3-section w3-blue-grey w3-ripple w3-padding">Submit</button>
-    </form>
+  <form class="w3-container form" method="POST" enctype="multipart/form-data">
+    {% if object.image %}
+    <img style="height:200px; width: 200px; object-fit: cover"
+      src="{{ object.image.url }}" alt="">
+    {% else %}
+    <img style="height:200px; width: 200px; object-fit: cover"
+      src="{% static 'images/target.jpg' %}" alt="">
+
+    {% endif %}
+    <div style="padding-top: 10px;color:white" class="w3-container">
+      <h2 class="w3-center">Edit your Denzel story</h2>
+    </div>
+    {{ form }}
+    {% csrf_token %}
+    <button class="w3-button w3-block w3-section w3-blue-grey w3-ripple w3-padding">Submit</button>
+  </form>
 </body>
 {% endblock %}

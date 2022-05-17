@@ -21,15 +21,11 @@
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <link rel="stylesheet" href="{% static 'css/main.css'%}">
     <link rel="icon" type="image/ico" href="{% static 'images/favicon.ico'%}">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet"> 
     <style>
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        body,h1,h2,h3,h4,h5,h6 {
             font-family: "Karma", sans-serif
         }
 
@@ -100,18 +96,17 @@
     </a>
     {% endif %}
 </nav>
+<div id="heading-container">
+    <h1 id="heading">Denzel Washington's Fan Page</h1>
+</div>
+{% if request.user.is_authenticated %}
+<a id="logoutBtn" href="{% url 'logout' %}">
+    <i class="fa fa-sign-out w3-display-topright"></i>
+</a>
+{% endif %}
+<a id="stripes" class="hov-btn w3-display-topleft" onclick="w3_open()">☰</a>
 
-<div id="main">
-    <div id='topMenu'>
-        <div id="stripes" class="w3-button hov-btn" onclick="w3_open()">☰</div>
-        <h1 id="heading">
-            Denzel Washington's Fan Page</h1>
-        {% if request.user.is_authenticated %}
-        <a id="logoutBtn" href="{% url 'logout' %}">
-            <span class="glyphicon glyphicon-log-out "></span>
-        </a>
-        {% endif %}
-    </div>
+<div id="mainContainer">
     {% block content %}
 
     {% endblock %}

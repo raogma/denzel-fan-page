@@ -6,25 +6,37 @@
 }
 
 #pst-container{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    padding: 0 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
 }
 
 #pst-div { 
     max-width:64rem;
-    height:fit-content;
-    padding:15rem 7rem 0 7rem; 
+    height:100vh;
+    padding:15rem 4rem 0 4rem; 
     background-color:white;
+    width: 62rem;
 }
 
 #pst-content {
     max-width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #pst-img-container{
     display:flex;
+    flex-direction: row-reverse;
+    height: 28rem;
+    justify-content: flex-end;
+}
+
+#pst-img-container>img{
+    position:absolute;   
+    max-width:36rem; 
+    max-height:28rem;
+    object-fit: cover;
 }
