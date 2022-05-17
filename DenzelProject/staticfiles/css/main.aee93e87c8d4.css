@@ -21,7 +21,7 @@
     justify-content: space-between;
 }
 
-#logoutBtn {
+#logoutBtn>i {
     color:white;
     font-size: xx-large;
     padding:1rem;
