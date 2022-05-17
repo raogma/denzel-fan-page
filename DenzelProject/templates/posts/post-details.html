@@ -111,13 +111,14 @@
 <script type="module" src={% static 'javascript/comments.js' %}></script>
 
 <script>
-    document.querySelector('#logoutBtn').style.color = 'white';
     document.querySelector('#stripes').style.color = 'white';
     document.querySelector('#heading').style.color = 'black';
     document.querySelector('#heading').style.maxWidth = '60rem';
-    document.querySelector('#heading').style.paddingTop = '7rem';
     document.querySelector('#heading').style.position = 'absolute';
     document.querySelector('#heading-container').style.position = 'absolute';
     document.querySelector('h1').style.zIndex = '1';
+    if(document.querySelector('#logoutBtn')){
+        document.querySelector('#logoutBtn').style.color = 'white';
+    } 
 </script>
 {% endblock %}
