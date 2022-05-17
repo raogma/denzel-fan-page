@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 
-class ContactsView(LoginRequiredMixin, TemplateView,):
+class ContactsView(TemplateView,):
     template_name = 'contacts.html'
 
 
@@ -24,11 +24,3 @@ def not_found_view(request, exception):
 
 class NotFoundView(TemplateView):
     template_name = 'page404.html'
-
-# class SuccessView(LoginRequiredMixin, TemplateView):
-#     template_name = 'success.html'
-
-    # def get_context_data(self, **kwargs):
-    #     ctx = super().get_context_data(**kwargs)
-    #     ctx['action'] = self.request.get('url')
-    #     return ctx

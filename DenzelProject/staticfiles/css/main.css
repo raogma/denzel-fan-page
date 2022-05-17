@@ -50,3 +50,7 @@
 .hov-btn:hover {
     background-color: #607D81!important;
 }
+
+#bg-shadow{
+    width:100%;
+}
