@@ -1,6 +1,13 @@
 @import 'forms.css';
 @import 'pages.css';
 @import 'buttons.css';
+@import 'contacts-page.css';
+@import 'post-details-page.css';
+@import 'welcome-page.css';
+@import 'prof-details-page.css';
+@import 'dashboard-page.css';
+
+
 
 nav {
     color: black;
@@ -21,12 +28,6 @@ label {
 .row {
     display: flex;
     flex-direction: row;
-}
-
-.dashImg {
-    object-fit: contain;
-    width: 234px;
-    height: 100%;
 }
 
 p.file-upload {

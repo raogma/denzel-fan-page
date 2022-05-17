@@ -1,0 +1,55 @@
+@import url("forms.084b88597f4d.css");
+@import url("pages.ce9790dbfd53.css");
+@import url("buttons.9210fc3f08c6.css");
+@import url("contacts-page.fa68a1a6ee85.css");
+@import url("post-details-page.f0b8b90447b4.css");
+@import url("welcome-page.09876ee5ae47.css");
+@import url("prof-details-page.7ed9d66d9b17.css");
+@import url("dashboard-page.96ccab3da58d.css");
+
+
+
+nav {
+    color: black;
+}
+
+label {
+    color: white;
+}
+
+.errorlist.nonfield {
+    color: red;
+}
+
+#id_searched {
+    padding: 18px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+p.file-upload {
+    color: white;
+}
+
+p.file-upload a {
+    color: white;
+}
+
+.errorlist {
+    color: white;
+}
+
+input.form-control {
+    margin-bottom: 20px;
+}
+
+#delForm input {
+    color: lightgrey;
+}
+
+input[type='file'] {
+    color: transparent;
+}

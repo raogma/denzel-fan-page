@@ -1,0 +1,24 @@
+#logoutpage {
+    color: white;
+    background-image: url("../images/flight.870e68228775.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#reg {
+    background-image: url("../images/eqend.850be7e9ecf4.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#crpstpage {
+    background-image: url("../images/trainingday.c4f68196fa24.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#page404 {
+    background-image: url("../images/bg.779a3afd9cd6.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

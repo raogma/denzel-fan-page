@@ -1,0 +1,17 @@
+#profdet {
+    background-image: url("../images/eqend.850be7e9ecf4.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    color:white;
+}
+
+.profImg{
+    width: 100%;
+}
+
+.profImg:hover {
+    display: block;
+    float: left;
+    box-shadow: 7px 7px 10px #607d8b;
+}

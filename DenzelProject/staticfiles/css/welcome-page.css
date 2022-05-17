@@ -1,0 +1,57 @@
+#welcome {
+    background-image: url(../images/manonfiregirl.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.welcome-container {
+    display:flex;
+    flex-direction: column;
+    height: 96vh;
+}
+
+.content-container {
+    display:inline-flex;
+    height: 90%;
+    width:100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-content {
+    color: white;
+    background-color: black;
+    border-radius: 0.5rem;
+    padding: 2rem;
+}
+
+#take-tour-btn {
+    background: black;
+    padding: 2rem;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.log-btn {
+    border-radius: 0.5rem;
+    color: white;
+}
+
+.log-btns-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 8rem;
+}
+
+#header {
+    font-family: 'Koulen', cursive;
+    font-size: 9rem;
+    text-align: center;
+    height: 10%;
+    color:white;
+    padding: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+}

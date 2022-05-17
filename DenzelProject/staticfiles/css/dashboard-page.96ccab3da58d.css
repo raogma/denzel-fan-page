@@ -1,0 +1,38 @@
+#eqdash {
+    background-image: url("../images/eqdash.611cd86724a9.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-x: 150px;
+    background-position-y: -70px;
+    background-attachment: fixed;
+}
+
+.dashImg {
+    object-fit: contain;
+    width: 234px;
+    height: 100%;
+    display: block;
+    float: left;
+    box-shadow: 7px 7px 10px #ccc;
+}
+
+.dashImg:hover {
+    display: block;
+    float: left;
+    box-shadow: 7px 7px 10px #607d8b;
+}
+
+
+#dash-content {
+    max-width: 100rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-around;
+}
+
+#dash-pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
