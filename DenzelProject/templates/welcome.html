@@ -1,9 +1,8 @@
 {% extends 'main/mainClean.html' %}
 {% block contentClean %}
     <body id="welcome">
-    <div class="welcome-container">
-        <div class="content-container">
-            <div class="log-content">
+        <div id="row-welcome">
+            <div id="log-card">
                 <h3>Not logged in?</h3>
                 <hr>
                 <p>Create a profile or Log in to our website</p>
@@ -12,10 +11,9 @@
                     <a class="log-btn w3-blue-grey w3-button" href="{% url 'create-profile' %}">Register</a>
                 </div>
             </div>
-            <a id="take-tour-btn" href="{% url 'posts' %}">Take Tour <i class="fa fa-angle-right"></i></a>
+            <a id="tour-btn" href="{% url 'posts' %}">Take Tour <i class="fa fa-angle-right"></i></a>
         </div>
         <h1 id="header">Denzel Washington Fan Page</h1>
-    </div>
     </body>
 
 {% endblock %}

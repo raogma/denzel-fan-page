@@ -1,20 +1,21 @@
 #contactspage {
-    color: white;
-    background-image: url(../images/trainingday2.jpg);
+    background-image:url(../images/trainingday2.jpg);
     background-repeat: no-repeat;
+    color: white;
     background-size: 100%;
+
 }
 
-.contactsContent {
+#contactsContent {
     display:flex;
     flex-direction: column;
     padding: 1em;
-    max-width: 100%;
-    height: 23vh;
-
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     box-shadow: 0 0 10px #000;
+    position:absolute;
+    bottom:0;
 }
 
 .row-contactsContainer {
@@ -28,4 +29,38 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between
+}
+
+
+@media screen and (max-width: 1279px) {
+    #contactspage{
+        background-size: auto!important;
+    }
+}
+
+
+@media screen and (max-width: 1055px) {
+    #contactspage{
+        background-position: -22rem 0;
+    }
+}
+
+@media screen and (max-width: 775px) {
+    #contactspage{
+        background-position: -50rem 0;
+    }
+}
+
+@media screen and (max-width: 485px) {
+    #contactspage{
+        background-position: -60rem 0;
+    }
+
+    #contactsContent #contactRow{
+        flex-direction: column;
+        align-items:center;
+    }
+    #contactsContent h1{
+        font-size: 3rem!important;
+    }
 }

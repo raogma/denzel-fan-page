@@ -5,11 +5,9 @@
 <body id="eqdash">
     {% if object_list %}
     <div id="dash-content" class="w3-content w3-padding">
-        <!-- First Photo Grid-->
-        <div class="row">
+        <div id="dash-cards">
             {% for post in page_obj.object_list %}
-            {% if forloop.counter <= 4 %}
-            <div class="col w3-quarter">
+            <div class="card">
                 <a href="{% url 'post-details' post.pk %}">
                     {% if post.image %}
                     <img class="dashImg w3-round" src="{{ post.image.url }}" alt="{{ post.description }}">
@@ -19,24 +17,6 @@
                 </a>
                 <h3>{{ post.header }}</h3>
             </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-        <!-- Second Photo Grid-->
-        <div class="row">
-            {% for post in page_obj.object_list %}
-            {% if forloop.counter > 4 %}
-            <div class="col w3-quarter">
-                <a href="{% url 'post-details' post.pk %}">
-                    {% if post.image %}
-                    <img class="dashImg w3-round" src="{{ post.image.url }}" alt="{{ post.description }}">
-                    {% else %}
-                    <img class="dashImg w3-round" src="{% static 'images/target.jpg' %}" alt="{{ post.description }}">
-                    {% endif %}
-                </a>
-                <h3>{{ post.header }}</h3>
-            </div>
-            {% endif %}
             {% endfor %}
         </div>
 
@@ -93,7 +73,7 @@
     document.querySelector('#heading').style.color = 'black';
     const logoutBtn = document.querySelector('#logoutBtn');
     if (logoutBtn){
-        logoutBtn.style.color = "black";
+        logoutBtn.querySelector('i').style.color = "black";
     }
     document.querySelector('#stripes').style.color = "black"
 </script>

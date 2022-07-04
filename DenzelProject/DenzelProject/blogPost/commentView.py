@@ -1,8 +1,6 @@
-from xml.dom.pulldom import COMMENT
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.serializers import ModelSerializer
-from django.views.generic import TemplateView
 from DenzelProject.blogPost.models import Comment
 from rest_framework.pagination import PageNumberPagination
 

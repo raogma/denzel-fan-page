@@ -14,7 +14,7 @@ const commentsPagination = document.querySelector('#comment-pagination-container
 const url = `/posts/details/${postPk}/commentsREST/`;
 const overlay = document.querySelector("#notMyOverlay");
 const commentButton = document.querySelector('#showComments');
-const commentsGlobal = document.querySelector('#comments');
+const commentsGlobal = document.querySelector('#comment-section');
 
 let commentsData = {
     //position: div
@@ -31,10 +31,8 @@ await loadComments(url);
 commentButton.addEventListener('click', ev => {
     if(commentsGlobal.style.display === 'none'){
         commentsGlobal.style.display = 'block';
-        document.querySelector('#pst-div').style.height = 'fit-content';
     } else {
         commentsGlobal.style.display = 'none';
-        document.querySelector('#pst-div').style.height = '100vh';
     }
 })
 
@@ -50,7 +48,7 @@ async function loadComments(url){
     let comments = await sendRequest(url, 'GET', undefined, csrf_token);
     let res = ''
     comments.results.map((x, i) => {
-        res += `<div class="w3-container" id="commentContainer-${i}">`
+        res += `<div class="pst-comment" id="commentContainer-${i}">`
         res += loadComment(x, user);
         res += '</div>'
     })

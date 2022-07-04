@@ -1,0 +1,28 @@
+#logoutpage {
+    background: linear-gradient(100deg, rgba(0, 0, 0, 0.3),
+    #607d8b), url(../images/flight.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#logout-header{
+    width: 110rem;
+}
+
+
+@media screen and (max-width: 1365px){
+    #logoutpage{
+        background-size: 137rem;
+    }
+    #logout-header{
+        width:100%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    #logout-header h1{
+        font-size: 4rem!important;
+    }
+}

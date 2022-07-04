@@ -1,10 +1,11 @@
 #eqdash {
     background-image: url(../images/eqdash.jpg);
     background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-x: 150px;
-    background-position-y: -70px;
+    background-size: auto;
+    background-position: right;
     background-attachment: fixed;
+    overflow:hidden;
+    max-height: 97vh;
 }
 
 .dashImg {
@@ -27,7 +28,7 @@
     max-width: 100rem;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 80%;
     justify-content: space-around;
 }
 
@@ -35,4 +36,59 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+#dash-cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.card{
+    width:20rem;
+    height:25rem;
+    margin-right:2rem;
+    margin-bottom:2rem;
+    border-style: none;
+}
+
+.card a{
+    width:20rem;
+    height:20rem;
+}
+
+@media screen and (max-width: 911px){ 
+    #eqdash{
+        overflow: unset;
+        max-height: unset;
+        display:flex;
+        flex-direction: column;
+        height: 115rem;
+        background-position: -33rem -11rem;
+    }
+    #dash-content{
+        height: unset;
+    }
+
+    #searchField{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px){  
+    #eqdash{
+        overflow: unset;
+        max-height: unset;
+        display:flex;
+        flex-direction: column;
+        height: 115rem;
+    }
+    #dash-content{
+        height: unset;
+    }
+
+    #searchField{
+        width: 100%;
+    }
 }

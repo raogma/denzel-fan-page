@@ -1,12 +1,12 @@
 {% extends 'main/main.html' %}
 {% load static %}
 {% block content %}
-    <body id="profdet">
+    <body class="log-body">
 
         <div id="prof-containter">
             <header class="w3-container w3-padding-32 w3-center" id="home">
                 {% if object.profile.get_name %}
-                    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> {{ object.profile.get_name }}</h1>
+                    <h1 id="profile-name" class="w3-jumbo"><span class="w3-hide-small">I'm</span> {{ object.profile.get_name }}</h1>
                 {% endif %}
                 {% if object.profile.avatar %}
                     <img style="object-fit: cover; height: 400px; width: 300px" src="{{ object.profile.avatar.url }}"

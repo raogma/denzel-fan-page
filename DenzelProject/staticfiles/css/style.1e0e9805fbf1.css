@@ -1,13 +1,13 @@
-@import 'pages.css';
-@import 'buttons.css';
-@import 'contacts-page.css';
-@import 'post-details-page.css';
-@import 'welcome-page.css';
-@import 'prof-details-page.css';
-@import 'dashboard-page.css';
-@import 'login.css';
-@import 'post.css';
-@import 'logout.css';
+@import url("forms.084b88597f4d.css");
+@import url("pages.ce9790dbfd53.css");
+@import url("buttons.9210fc3f08c6.css");
+@import url("contacts-page.fa68a1a6ee85.css");
+@import url("post-details-page.f0b8b90447b4.css");
+@import url("welcome-page.0eb372fb0ead.css");
+@import url("prof-details-page.7ed9d66d9b17.css");
+@import url("dashboard-page.96ccab3da58d.css");
+
+
 
 nav {
     color: black;

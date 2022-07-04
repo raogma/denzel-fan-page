@@ -1,11 +1,3 @@
-#profdet {
-    background-image: url(../images/eqend.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-attachment: fixed;
-    color:white;
-}
-
 .profImg{
     width: 100%;
 }
@@ -14,4 +6,11 @@
     display: block;
     float: left;
     box-shadow: 7px 7px 10px #607d8b;
+}
+
+
+@media screen and (max-width: 567px) {
+    #profile-name{
+        font-size:3rem!important;
+    }
 }

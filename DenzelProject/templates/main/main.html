@@ -96,15 +96,16 @@
     </a>
     {% endif %}
 </nav>
-<div id="heading-container">
-    <h1 id="heading">Denzel Washington's Fan Page</h1>
+<h1 id="heading">Denzel Washington's Fan Page</h1>
+<div id="heading-buttons">
+    <a id="stripes" class="hov-btn" onclick="w3_open()">☰</a>
+    {% if request.user.is_authenticated %}
+    <a id="logoutBtn" href="{% url 'logout' %}">
+        <i class="fa fa-sign-out hov-btn"></i>
+    </a>
+    {% endif %}
+    
 </div>
-{% if request.user.is_authenticated %}
-<a id="logoutBtn" href="{% url 'logout' %}">
-    <i class="fa fa-sign-out w3-display-topright"></i>
-</a>
-{% endif %}
-<a id="stripes" class="hov-btn w3-display-topleft" onclick="w3_open()">☰</a>
 
 <div id="mainContainer">
     {% block content %}

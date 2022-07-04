@@ -1,19 +1,19 @@
+#mySidebar{
+    top:0;
+}
+
 #heading {
     color:white;
     font-family: 'Koulen';
     font-size: 7rem;
     text-align: center;
-}
-
-#heading-container {
-    width: 100%;
-    height: 10rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    width:100%;
+    position: absolute;
+    top: 0;
 }
 
 #mainContainer {
+    padding-top:20rem;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -21,29 +21,34 @@
     justify-content: space-between;
 }
 
+#heading-buttons{
+    width:100vw;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 2rem;
+}
+
 #logoutBtn>i {
     color:white;
     font-size: xx-large;
     padding:1rem;
-    font-size: xx-large;
-    margin-top: 2rem;  
+    z-index:1;
 }
 
 #logoutBtn>i:hover {
     background-color: transparent;
-    display: block;
-    box-shadow: 7px 7px 10px #6699CC;
     font-size: xx-large;  
-    padding:1rem;
-    position: absolute;
 }
 
 #stripes {
     font-size: 3rem;
     color:white;
-    position: fixed;
     padding:1rem;
     background-color: transparent;
+    cursor:pointer;
+    z-index:1;
 }
 
 
@@ -53,4 +58,27 @@
 
 #bg-shadow{
     width:100%;
+}
+
+
+@media screen and (max-width: 911px) {
+    #heading{
+        font-size: 5rem!important;
+    }
+    
+    #heading-buttons{
+        top: 7rem;
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width: 567px) {
+    #heading-buttons{
+        padding-top:3rem;
+    }
+
+    #heading{
+        font-size: 3rem!important;
+    }
 }
