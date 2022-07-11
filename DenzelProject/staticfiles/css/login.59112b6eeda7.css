@@ -1,0 +1,52 @@
+.log-body{
+    background-image: url("../images/eqend.850be7e9ecf4.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 97vh;
+    color:white;
+}
+
+.form{
+    padding: 3rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 35%;
+    position:relative;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%, -30%);
+}
+
+@media screen and (max-width: 1279px) {
+    .log-body{
+        background-size: auto!important;
+        background-position: -115rem -15rem;
+    }
+
+    .form{
+        min-width: 50%!important;
+    }
+}
+
+@media screen and (max-width: 1044px) {
+    .log-body{
+        background-position: -131rem -15rem;
+    } 
+}
+
+@media screen and (max-width: 600px) {
+    .log-body{
+        background-size: auto!important;
+        background-position: center;
+        background-position: -130rem -15rem;
+    } 
+    #backArrow{
+        bottom:0rem;
+    }
+
+    .form{
+        min-width: 100%!important;
+    }
+}
